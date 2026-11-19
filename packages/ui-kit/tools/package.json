@@ -3,5 +3,5 @@
   "private": true,
   "type": "module",
   "scripts": { "icons": "node gen-icons.mjs" },
-  "dependencies": { "@tabler/icons": "3.50.0" }
+  "dependencies": { "@tabler/icons": "3.52.0" }
 }
