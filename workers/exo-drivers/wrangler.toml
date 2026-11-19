@@ -1,0 +1,15 @@
+# Exo driver watch: checks NVIDIA, AMD and Intel for new GPU drivers and posts a card to Discord. Recovered from the live
+# deployment's source map. Secrets: DISCORD_WEBHOOK, RUN_TOKEN. Live it runs every 30 minutes; the schedule is not imported.
+name = "exo-drivers"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[[kv_namespaces]]
+binding = "DRIVERS"
+id = "REPLACE_WITH_RESOURCE_ID"
+
+[triggers]
+crons = []
