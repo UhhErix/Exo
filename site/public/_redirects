@@ -1,0 +1,11 @@
+# The home is the Launcher's page.
+/launcher / 302
+/launcher/ / 302
+# What's new is the Changelog now.
+/launcher/whats-new /launcher/changelog 301
+/cinema/whats-new /cinema/changelog 301
+# Shelved for now: 302s, so they can come back. Exact paths only, so /browser/changelog (the Worker's page, and its
+# static copy) isn't caught by a splat.
+/download/browser / 302
+/browser / 302
+/browser/ / 302

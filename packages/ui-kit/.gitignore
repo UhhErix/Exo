@@ -1,0 +1,3 @@
+# Build output (the workspace and examples/hello-exo share target/ when CARGO_TARGET_DIR says so) and Node tools
+target/
+node_modules/

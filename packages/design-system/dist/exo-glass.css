@@ -1,0 +1,46 @@
+/* Exo design system: the apps' Liquid Glass (HTML prototypes and the style page only; the website never loads it). Generated from tokens/tokens.json by scripts/build.mjs. Do not edit. */
+:root {
+  --exo-rim: rgb(255 255 255 / 0.14);
+  --exo-rim-pressed: rgb(255 255 255 / 0.08);
+  --exo-glass-hover: rgb(255 255 255 / 0.06);
+  --exo-glass-selected: rgb(255 255 255 / 0.07);
+  --exo-glass-pressed: rgb(255 255 255 / 0.12);
+  --exo-panel-hover: rgb(255 255 255 / 0.07);
+  --exo-panel-selected: rgb(255 255 255 / 0.1);
+  --exo-panel-pressed: rgb(255 255 255 / 0.14);
+  --exo-glass-clear: rgb(0 0 0 / 0);
+  --exo-glass-overlay: rgb(0 0 0 / 0.36);
+  --exo-shadow-color: rgb(0 0 0 / 0.5);
+  --exo-shadow-words-color: rgb(0 0 0 / 0.45);
+  --exo-text-glass-secondary: #e4e4e4;
+  --exo-text-panel-secondary: #dcdcdc;
+  --exo-glass-small: blur(10px) brightness(0.62) contrast(1) saturate(1.8);
+  --exo-glass-large: blur(20px) brightness(0.66) contrast(1) saturate(1.8);
+  --exo-glass-menu: blur(20px) brightness(0.66) contrast(1) saturate(1.8);
+  --exo-glass-pane: blur(14px) brightness(0.62) contrast(1) saturate(1.8);
+  --exo-glass-plate: blur(10px) brightness(0.34) contrast(0.9) saturate(1.6);
+  --exo-shadow-raised: 0px 0px 40px 0px rgb(0 0 0 / 0.5);
+  --exo-shadow-words: 0px 1px 2px 0px rgb(0 0 0 / 0.45);
+  --exo-glass-rim-width: 1px;
+}
+
+/* Liquid Glass: clear and toned over what is behind, inside one even line. Small glass casts no shadow. */
+.exo-glass {
+  position: relative;
+  background-color: var(--exo-glass-clear);
+  backdrop-filter: var(--exo-glass-small);
+  box-shadow: inset 0 0 0 var(--exo-glass-rim-width) var(--exo-rim);
+}
+.exo-glass:hover { background-color: var(--exo-glass-hover); }
+.exo-glass:active { background-color: var(--exo-glass-pressed); }
+/* Large glass floats: the overlay over a thicker blur, a raised shadow, the same one line. */
+.exo-glass--large, .exo-glass--menu {
+  position: relative;
+  background-color: var(--exo-glass-overlay);
+  backdrop-filter: var(--exo-glass-large);
+  box-shadow: var(--exo-shadow-raised), inset 0 0 0 var(--exo-glass-rim-width) var(--exo-rim);
+}
+.exo-glass--large:hover, .exo-glass--menu:hover { background-image: linear-gradient(var(--exo-panel-hover), var(--exo-panel-hover)); }
+.exo-glass--large:active, .exo-glass--menu:active { background-image: linear-gradient(var(--exo-panel-pressed), var(--exo-panel-pressed)); }
+.exo-glass--pane { position: relative; backdrop-filter: var(--exo-glass-pane); box-shadow: inset 0 0 0 var(--exo-glass-rim-width) var(--exo-rim); }
+.exo-glass--plate { position: relative; backdrop-filter: var(--exo-glass-plate); box-shadow: inset 0 0 0 var(--exo-glass-rim-width) var(--exo-rim); }

@@ -1,0 +1,126 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Library.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Library",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Game.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Game page",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Store.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Store",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "Music.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Music",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "PC.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "PC",
+      "w": 1440,
+      "x": 0,
+      "y": 1060
+    },
+    "Devices.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Devices",
+      "w": 1440,
+      "x": 1520,
+      "y": 1060
+    },
+    "Settings.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Settings",
+      "w": 1440,
+      "x": 3040,
+      "y": 1060
+    },
+    "Bar.dc.html": {
+      "h": 830,
+      "title": "Top bar and its mini players",
+      "w": 1920,
+      "x": 0,
+      "y": 2120
+    },
+    "Alerts.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Notices, banner, counter",
+      "w": 1440,
+      "x": 4560,
+      "y": 1060
+    },
+    "Discord.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Discord: Now",
+      "w": 1440,
+      "x": 0,
+      "y": 3110
+    },
+    "DiscordFriends.dc.html": {
+      "expand": "fill",
+      "h": 900,
+      "title": "Discord: a channel",
+      "w": 1440,
+      "x": 1520,
+      "y": 3110
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-09T22:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "screens": {
+      "kind": "title1",
+      "maxW": 6000,
+      "text": "Exo Launcher: your design, improved",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Library.dc.html",
+    "Game.dc.html",
+    "Store.dc.html",
+    "Music.dc.html",
+    "PC.dc.html",
+    "Devices.dc.html",
+    "Settings.dc.html",
+    "Alerts.dc.html",
+    "Bar.dc.html",
+    "Discord.dc.html",
+    "DiscordFriends.dc.html"
+  ],
+  "pages": [],
+  "title": "Exo Design Language"
+}

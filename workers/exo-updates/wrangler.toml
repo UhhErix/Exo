@@ -1,0 +1,10 @@
+name = "exo-updates"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[[r2_buckets]]
+binding = "MIRROR"
+bucket_name = "replace-with-mirror-bucket"

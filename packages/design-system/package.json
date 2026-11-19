@@ -1,0 +1,16 @@
+{
+  "name": "exo-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Exo's one design source: tokens/tokens.json generates dist/exo_tokens.rs (GPUI) and dist/exo.css (the website and HTML prototypes).",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test tests/"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

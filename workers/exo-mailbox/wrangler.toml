@@ -1,0 +1,23 @@
+name = "exo-mailbox"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[[durable_objects.bindings]]
+name = "BOXES"
+class_name = "Box"
+
+[[ratelimits]]
+name = "LINK_GUESSES"
+namespace_id = "1002"
+simple = { limit = 10, period = 60 }
+
+[[durable_objects.bindings]]
+name = "LINKS"
+class_name = "Link"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Box", "Link"]

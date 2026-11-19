@@ -1,0 +1,252 @@
+[
+ {
+  "page": "home",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Launcher for Windows 11",
+  "pageHeightPx": 7685,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "home-1440.png"
+  ]
+ },
+ {
+  "page": "home",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Launcher for Windows 11",
+  "pageHeightPx": 3578,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "home-390.png"
+  ]
+ },
+ {
+  "page": "cinema",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Cinema for Windows 11",
+  "pageHeightPx": 9689,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "cinema-1440.png"
+  ]
+ },
+ {
+  "page": "cinema",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Cinema for Windows 11",
+  "pageHeightPx": 10024,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "cinema-390.png"
+  ]
+ },
+ {
+  "page": "launcher-changelog",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Launcher changelog · Exo",
+  "pageHeightPx": 344265,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "launcher-changelog-1440-part1.png",
+   "(+28 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "launcher-changelog",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Launcher changelog · Exo",
+  "pageHeightPx": 329544,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "launcher-changelog-390-part1.png",
+   "(+27 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "cinema-changelog",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Cinema changelog · Exo",
+  "pageHeightPx": 39561,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "cinema-changelog-1440-part1.png",
+   "(+3 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "cinema-changelog",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Cinema changelog · Exo",
+  "pageHeightPx": 19410,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "cinema-changelog-390-part1.png",
+   "(+1 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "browser-changelog",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Browser changelog · Exo",
+  "pageHeightPx": 52809,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "browser-changelog-1440-part1.png",
+   "(+4 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "browser-changelog",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Browser changelog · Exo",
+  "pageHeightPx": 41784,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "browser-changelog-390-part1.png",
+   "(+3 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "privacy",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Privacy · Exo",
+  "pageHeightPx": 33195,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "privacy-1440-part1.png",
+   "(+2 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "privacy",
+  "viewport": 390,
+  "status": 200,
+  "title": "Privacy · Exo",
+  "pageHeightPx": 43077,
+  "scrollWidthPx": 711,
+  "viewportWidthPx": 390,
+  "file": [
+   "privacy-390-part1.png",
+   "(+3 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "license",
+  "viewport": 1440,
+  "status": 200,
+  "title": "License · Exo",
+  "pageHeightPx": 4384,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "license-1440.png"
+  ]
+ },
+ {
+  "page": "license",
+  "viewport": 390,
+  "status": 200,
+  "title": "License · Exo",
+  "pageHeightPx": 5907,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "license-390.png"
+  ]
+ },
+ {
+  "page": "earlier-apps",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Earlier apps' terms · Exo",
+  "pageHeightPx": 13099,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "earlier-apps-1440-part1.png",
+   "(+1 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "earlier-apps",
+  "viewport": 390,
+  "status": 200,
+  "title": "Earlier apps' terms · Exo",
+  "pageHeightPx": 15675,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "earlier-apps-390-part1.png",
+   "(+1 more segments, deleted)"
+  ]
+ },
+ {
+  "page": "download-browser",
+  "viewport": 1440,
+  "status": 200,
+  "title": "Exo Launcher for Windows 11",
+  "pageHeightPx": 7685,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "download-browser-1440.png"
+  ]
+ },
+ {
+  "page": "download-browser",
+  "viewport": 390,
+  "status": 200,
+  "title": "Exo Launcher for Windows 11",
+  "pageHeightPx": 3578,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "download-browser-390.png"
+  ]
+ },
+ {
+  "page": "not-found",
+  "viewport": 1440,
+  "status": 404,
+  "title": "Not found · Exo",
+  "pageHeightPx": 900,
+  "scrollWidthPx": 1440,
+  "viewportWidthPx": 1440,
+  "file": [
+   "not-found-1440.png"
+  ]
+ },
+ {
+  "page": "not-found",
+  "viewport": 390,
+  "status": 404,
+  "title": "Not found · Exo",
+  "pageHeightPx": 844,
+  "scrollWidthPx": 390,
+  "viewportWidthPx": 390,
+  "file": [
+   "not-found-390.png"
+  ]
+ }
+]

@@ -1,0 +1,14 @@
+name = "exo-jams"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[[durable_objects.bindings]]
+name = "JAM_ROOMS"
+class_name = "JamRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["JamRoom"]

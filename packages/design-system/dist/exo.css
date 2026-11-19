@@ -1,0 +1,230 @@
+/* Exo design system: the website (no glass). Generated from tokens/tokens.json by scripts/build.mjs. Do not edit. */
+@font-face {
+  font-family: "Geist";
+  src: url("fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --exo-scale: 1;
+  --exo-void: #000000;
+  --exo-void-raised: #080808;
+  --exo-tile: #121212;
+  --exo-line-soft: #161616;
+  --exo-hairline: #1f1f1f;
+  --exo-line: #222222;
+  --exo-control-line: #2a2a2a;
+  --exo-solid: #121212;
+  --exo-hover: rgb(255 255 255 / 0.1);
+  --exo-pressed: rgb(255 255 255 / 0.133);
+  --exo-selected: rgb(255 255 255 / 0.15);
+  --exo-track: rgb(255 255 255 / 0.17);
+  --exo-scrim: rgb(0 0 0 / 0.6);
+  --exo-text: #ffffff;
+  --exo-text-muted: #9d9d9d;
+  --exo-text-faint: #868686;
+  --exo-accent: #ffffff;
+  --exo-accent-fg: #000000;
+  --exo-accent-hover: #e8e8e8;
+  --exo-good: #3dd68c;
+  --exo-warn: #ffb340;
+  --exo-bad: #ff5c5c;
+  --exo-on-state: #000000;
+  --exo-radius-xs: 4px;
+  --exo-radius-row: 8px;
+  --exo-radius-card: 14px;
+  --exo-radius-panel: 18px;
+  --exo-radius-sheet: 24px;
+  --exo-radius-pill: 999px;
+  --exo-space-xs: 4px;
+  --exo-space-sm: 6px;
+  --exo-space-md: 8px;
+  --exo-inset: 10px;
+  --exo-space-lg: 12px;
+  --exo-space-xl: 16px;
+  --exo-space-2xl: 20px;
+  --exo-space-3xl: 24px;
+  --exo-space-4xl: 32px;
+  --exo-size-control-compact: 28px;
+  --exo-size-control: 32px;
+  --exo-size-control-primary: 44px;
+  --exo-size-capsule: 36px;
+  --exo-size-band: 52px;
+  --exo-size-menu-row: 34px;
+  --exo-size-menu-width: 240px;
+  --exo-size-row: 42px;
+  --exo-size-settings-row: 62px;
+  --exo-size-switch-w: 40px;
+  --exo-size-switch-h: 24px;
+  --exo-size-knob: 14px;
+  --exo-size-progress-s: 3px;
+  --exo-size-progress-m: 4px;
+  --exo-size-progress-l: 6px;
+  --exo-font-sans: Geist, system-ui, sans-serif;
+  --exo-font-mono: "Geist Mono", ui-monospace, Consolas, monospace;
+  --exo-size-label: 10px;
+  --exo-size-small: 12px;
+  --exo-size-body: 13px;
+  --exo-size-read: 15px;
+  --exo-size-title: 20px;
+  --exo-size-page: 28px;
+  --exo-size-first-run: 32px;
+  --exo-weight-light: 300;
+  --exo-weight-regular: 400;
+  --exo-weight-medium: 500;
+  --exo-weight-semibold: 600;
+  --exo-weight-bold: 700;
+  --exo-weight-control: 500;
+  --exo-weight-title: 600;
+  --exo-tracking: 0px;
+  --exo-leading-body: 1.5;
+  --exo-leading-read: 1.375;
+  --exo-dur-instant: 0ms;
+  --exo-dur-press: 90ms;
+  --exo-dur-quick: 120ms;
+  --exo-dur-base: 160ms;
+  --exo-dur-move: 220ms;
+  --exo-dur-flight: 300ms;
+  --exo-dur-arrive: 280ms;
+  --exo-dur-settle: 260ms;
+  --exo-dur-progress: 300ms;
+  --exo-dur-hold: 3000ms;
+  --exo-dur-done-hold: 2400ms;
+  --exo-stagger: 24ms;
+  --exo-dur-sheen: 1600ms;
+  --exo-dur-glide: 1400ms;
+  --exo-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --exo-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --exo-ease-linear: cubic-bezier(0, 0, 1, 1);
+  --exo-ease-spring: linear(0 0%, 0.008404 1.5385%, 0.031142 3.0769%, 0.064913 4.6154%, 0.106912 6.1538%, 0.154775 7.6923%, 0.206527 9.2308%, 0.260535 10.7692%, 0.315461 12.3077%, 0.37023 13.8462%, 0.423986 15.3846%, 0.476067 16.9231%, 0.525972 18.4615%, 0.573338 20%, 0.617919 21.5385%, 0.659562 23.0769%, 0.698194 24.6154%, 0.733807 26.1538%, 0.766441 27.6923%, 0.796178 29.2308%, 0.823129 30.7692%, 0.847428 32.3077%, 0.869224 33.8462%, 0.888677 35.3846%, 0.905951 36.9231%, 0.921213 38.4615%, 0.934627 40%, 0.946354 41.5385%, 0.95655 43.0769%, 0.965362 44.6154%, 0.972932 46.1538%, 0.979391 47.6923%, 0.984862 49.2308%, 0.989458 50.7692%, 0.993284 52.3077%, 0.996436 53.8462%, 0.999001 55.3846%, 1.001057 56.9231%, 1.002675 58.4615%, 1.003918 60%, 1.004844 61.5385%, 1.005502 63.0769%, 1.005936 64.6154%, 1.006185 66.1538%, 1.006283 67.6923%, 1.006259 69.2308%, 1.006139 70.7692%, 1.005944 72.3077%, 1.005693 73.8462%, 1.005401 75.3846%, 1.005081 76.9231%, 1.004744 78.4615%, 1.0044 80%, 1.004055 81.5385%, 1.003714 83.0769%, 1.003384 84.6154%, 1.003066 86.1538%, 1.002763 87.6923%, 1.002478 89.2308%, 1.002211 90.7692%, 1.001963 92.3077%, 1.001734 93.8462%, 1.001523 95.3846%, 1.001332 96.9231%, 1.001157 98.4615%, 1 100%);
+  --exo-icon-stroke: 1.875;
+  --exo-icon-size-row: 16px;
+  --exo-icon-size-control: 20px;
+  --exo-icon-size-large: 24px;
+  --exo-z-base: 0;
+  --exo-z-float: 10;
+  --exo-z-scrim: 20;
+  --exo-z-sheet: 30;
+  --exo-z-menu: 40;
+  --exo-z-notice: 50;
+  --exo-bp-compact: 600px;
+  --exo-bp-narrow: 1040px;
+  --exo-bp-wide: 1500px;
+  --exo-bp-xwide: 1800px;
+}
+
+/* Pure Void black, hairlines, solid buttons: the look of the site. */
+.exo-page { background: var(--exo-void); color: var(--exo-text); font-family: var(--exo-font-sans); }
+:focus-visible { outline: 2px solid var(--exo-accent); outline-offset: 2px; }
+.exo-radius-xs { border-radius: var(--exo-radius-xs); }
+.exo-radius-row { border-radius: var(--exo-radius-row); }
+.exo-radius-card { border-radius: var(--exo-radius-card); }
+.exo-radius-panel { border-radius: var(--exo-radius-panel); }
+.exo-radius-sheet { border-radius: var(--exo-radius-sheet); }
+.exo-radius-pill { border-radius: var(--exo-radius-pill); }
+.exo-type-label { font-size: var(--exo-size-label); }
+.exo-type-small { font-size: var(--exo-size-small); }
+.exo-type-body { font-size: var(--exo-size-body); }
+.exo-type-read { font-size: var(--exo-size-read); }
+.exo-type-title { font-size: var(--exo-size-title); }
+.exo-type-page { font-size: var(--exo-size-page); }
+.exo-type-firstRun { font-size: var(--exo-size-first-run); }
+.exo-weight-light { font-weight: var(--exo-weight-light); }
+.exo-weight-regular { font-weight: var(--exo-weight-regular); }
+.exo-weight-medium { font-weight: var(--exo-weight-medium); }
+.exo-weight-semibold { font-weight: var(--exo-weight-semibold); }
+.exo-weight-bold { font-weight: var(--exo-weight-bold); }
+.exo-weight-control { font-weight: var(--exo-weight-control); }
+.exo-weight-title { font-weight: var(--exo-weight-title); }
+.exo-font-sans { font-family: var(--exo-font-sans); }
+.exo-font-mono { font-family: var(--exo-font-mono); }
+.exo-tabular { font-variant-numeric: tabular-nums; }
+.exo-icon {
+  width: var(--exo-icon-size-row);
+  height: var(--exo-icon-size-row);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--exo-icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.exo-icon--control { width: var(--exo-icon-size-control); height: var(--exo-icon-size-control); }
+.exo-icon--large { width: var(--exo-icon-size-large); height: var(--exo-icon-size-large); }
+
+/* Motion: state motions transition, enter motions play their keyframes. Reduced motion never moves anything. */
+@keyframes exo-page-enter-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-page-enter-1 { from { translate: 12px 0px } to { translate: 0px 0px } }
+@keyframes exo-page-enter-leave-0 { from { opacity: 1 } to { opacity: 0 } }
+@keyframes exo-page-enter-r-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-page-enter-r-leave-0 { from { opacity: 1 } to { opacity: 0 } }
+@keyframes exo-card-morph-0 { from { transform: translate(var(--exo-flip-x, 0px), var(--exo-flip-y, 0px)) scale(var(--exo-flip-sx, 1), var(--exo-flip-sy, 1)) } to { transform: none } }
+@keyframes exo-list-stagger-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-list-stagger-1 { from { translate: 0px 8px } to { translate: 0px 0px } }
+@keyframes exo-list-stagger-r-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-sheet-0 { from { scale: 0.98 } to { scale: 1 } }
+@keyframes exo-sheet-leave-0 { from { scale: 1 } to { scale: 0.98 } }
+@keyframes exo-sheet-scrim-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-sheet-r-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-sheet-r-leave-0 { from { opacity: 1 } to { opacity: 0 } }
+@keyframes exo-sheet-r-scrim-0 { from { opacity: 0 } to { opacity: 1 } }
+@keyframes exo-toast-0 { from { translate: 0px -8px } to { translate: 0px 0px } }
+@keyframes exo-toast-leave-0 { from { opacity: 1 } to { opacity: 0 } }
+@keyframes exo-progress-0 { from { scale: 0 1 } to { scale: 1 1 } }
+@keyframes exo-progress-loop-0-0 { from { translate: -100% 0px } to { translate: 100% 0px } }
+@keyframes exo-progress-loop-1-0 { from { translate: -100% 0px } to { translate: 300% 0px } }
+@keyframes exo-progress-r-0 { from { scale: 0 1 } to { scale: 1 1 } }
+.exo-motion-press { scale: 1; transition: scale var(--exo-dur-quick) var(--exo-ease-out); }
+.exo-motion-press:active { scale: 0.97; transition: scale var(--exo-dur-press) var(--exo-ease-out); }
+.exo-motion-hover-lift { filter: brightness(1); translate: 0px 0px; transition: translate var(--exo-dur-quick) var(--exo-ease-out), filter var(--exo-dur-quick) var(--exo-ease-out); }
+.exo-motion-hover-lift:hover { filter: brightness(1.06); translate: 0px -3px; transition: translate var(--exo-dur-quick) var(--exo-ease-out), filter var(--exo-dur-quick) var(--exo-ease-out); }
+.exo-motion-page-enter { animation: exo-page-enter-0 var(--exo-dur-base) var(--exo-ease-out) both, exo-page-enter-1 var(--exo-dur-settle) var(--exo-ease-spring) both; }
+.exo-motion-page-enter-leave { animation: exo-page-enter-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+.exo-motion-card-morph { animation: exo-card-morph-0 var(--exo-dur-settle) var(--exo-ease-spring) both; }
+.exo-motion-list-stagger { animation: exo-list-stagger-0 var(--exo-dur-arrive) var(--exo-ease-out) both, exo-list-stagger-1 var(--exo-dur-arrive) var(--exo-ease-out) both; animation-delay: calc(min(var(--exo-index, 0), 7) * var(--exo-stagger)); }
+.exo-motion-sheet { animation: exo-sheet-0 var(--exo-dur-settle) var(--exo-ease-spring) both; }
+.exo-motion-sheet-leave { animation: exo-sheet-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+.exo-motion-sheet-scrim { animation: exo-sheet-scrim-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+.exo-motion-toast { animation: exo-toast-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+.exo-motion-toast-leave { animation: exo-toast-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+.exo-motion-progress { animation: exo-progress-0 var(--exo-dur-progress) var(--exo-ease-out) both; }
+.exo-motion-progress-loop-0 { animation: exo-progress-loop-0 var(--exo-dur-sheen) var(--exo-ease-linear) infinite; }
+html[data-exo-inactive="true"] .exo-motion-progress-loop-0 { animation-play-state: paused; }
+.exo-motion-progress-loop-1 { animation: exo-progress-loop-1 var(--exo-dur-glide) var(--exo-ease-linear) infinite; }
+html[data-exo-inactive="true"] .exo-motion-progress-loop-1 { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .exo-motion-press { scale: 1; transition: none; }
+  .exo-motion-press:active { scale: 1; transition: none; }
+  .exo-motion-hover-lift { filter: brightness(1); translate: 0px 0px; transition: filter var(--exo-dur-quick) var(--exo-ease-out); }
+  .exo-motion-hover-lift:hover { filter: brightness(1.06); translate: 0px 0px; transition: filter var(--exo-dur-quick) var(--exo-ease-out); }
+  .exo-motion-page-enter { animation: exo-page-enter-r-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+  .exo-motion-page-enter-leave { animation: exo-page-enter-r-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+  .exo-motion-card-morph { animation: none; }
+  .exo-motion-list-stagger { animation: exo-list-stagger-r-0 var(--exo-dur-base) var(--exo-ease-out) both; animation-delay: 0ms; }
+  .exo-motion-sheet { animation: exo-sheet-r-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+  .exo-motion-sheet-leave { animation: exo-sheet-r-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+  .exo-motion-sheet-scrim { animation: exo-sheet-r-scrim-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+  .exo-motion-toast { animation: none; }
+  .exo-motion-toast-leave { animation: none; }
+  .exo-motion-progress { animation: exo-progress-r-0 var(--exo-dur-instant) var(--exo-ease-linear) both; }
+  .exo-motion-progress-loop-0 { animation: none; }
+  .exo-motion-progress-loop-1 { animation: none; }
+}
+:root[data-exo-motion="reduce"] .exo-motion-press { scale: 1; transition: none; }
+:root[data-exo-motion="reduce"] .exo-motion-press:active { scale: 1; transition: none; }
+:root[data-exo-motion="reduce"] .exo-motion-hover-lift { filter: brightness(1); translate: 0px 0px; transition: filter var(--exo-dur-quick) var(--exo-ease-out); }
+:root[data-exo-motion="reduce"] .exo-motion-hover-lift:hover { filter: brightness(1.06); translate: 0px 0px; transition: filter var(--exo-dur-quick) var(--exo-ease-out); }
+:root[data-exo-motion="reduce"] .exo-motion-page-enter { animation: exo-page-enter-r-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+:root[data-exo-motion="reduce"] .exo-motion-page-enter-leave { animation: exo-page-enter-r-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+:root[data-exo-motion="reduce"] .exo-motion-card-morph { animation: none; }
+:root[data-exo-motion="reduce"] .exo-motion-list-stagger { animation: exo-list-stagger-r-0 var(--exo-dur-base) var(--exo-ease-out) both; animation-delay: 0ms; }
+:root[data-exo-motion="reduce"] .exo-motion-sheet { animation: exo-sheet-r-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+:root[data-exo-motion="reduce"] .exo-motion-sheet-leave { animation: exo-sheet-r-leave-0 var(--exo-dur-quick) var(--exo-ease-out) both; }
+:root[data-exo-motion="reduce"] .exo-motion-sheet-scrim { animation: exo-sheet-r-scrim-0 var(--exo-dur-base) var(--exo-ease-out) both; }
+:root[data-exo-motion="reduce"] .exo-motion-toast { animation: none; }
+:root[data-exo-motion="reduce"] .exo-motion-toast-leave { animation: none; }
+:root[data-exo-motion="reduce"] .exo-motion-progress { animation: exo-progress-r-0 var(--exo-dur-instant) var(--exo-ease-linear) both; }
+:root[data-exo-motion="reduce"] .exo-motion-progress-loop-0 { animation: none; }
+:root[data-exo-motion="reduce"] .exo-motion-progress-loop-1 { animation: none; }
