@@ -85,7 +85,7 @@ const footer = () => `<footer class="foot">
 </footer>`
 
 const ROOMS = [
-  ['library', 'Library', 'All stores in one Void black grid', 'Steam, Epic, GOG, Riot, Xbox, EA, Ubisoft, Battle.net and added games together under Exo 3.27.0 with Real Liquid Glass top bar and Steam Family badges.'],
+  ['library', 'Library', 'All stores in one Void black grid', 'Steam, Epic, GOG, Riot, Xbox, EA, Ubisoft, Battle.net and added games together under Exo 3.28.0 with Real Liquid Glass top bar and Steam Family badges.'],
   ['game', 'Game page', 'Zero-scroll game sheet', 'Play, total playtime, last launched, storage footprint, live DLSS/FSR/XeSS versions, OptiScaler frame generation, HDR and Shader status on one page without scrolling.'],
   ['store', 'Store', 'Discover across official storefronts', 'Curated picks, upcoming calendar, wishlist price alerts and per-store pricing without ads or third-party grey markets.'],
   ['discord', 'Discord', 'Native Discord client inside Exo', 'Servers, DMs, Friends, Stage channels, HDR screen share and release announcements running natively beside your games.'],
@@ -108,7 +108,7 @@ export function homePage() {
   }
   return `${head({
     title: 'Exo: Launcher and Cinema for Windows 11',
-    description: 'Two Windows 11 apps from one developer: Exo Launcher 3.27.0 for games, Discord, music and hardware, and Exo Cinema for your Jellyfin library. Pure OLED black. No ads. Your data is never sold.',
+    description: 'Two Windows 11 apps from one developer: Exo Launcher 3.28.0 for games, Discord, music and hardware, and Exo Cinema for your Jellyfin library. Pure OLED black. No ads. Your data is never sold.',
     path: '/',
     ogDescription: 'Two Windows 11 apps from one developer. No ads. Your data is never sold.',
     ldJson: ld,
@@ -127,7 +127,7 @@ ${header('/')}
 <a class="btn" href="/cinema">Exo Cinema</a>
 </div>
 <p class="hero-meta hero-anim d4"><span data-release-version="launcher" data-prefix="Launcher ">Launcher ${l.version}</span> · <span data-release-version="cinema" data-prefix="Cinema ">Cinema ${c.version}</span> · 64-bit Windows 11 · No ads</p>
-<div class="frame hero-anim d4">${picture('library', 'Exo Launcher 3.27.0 game library on pure black with Real Liquid Glass top bar', '(min-width: 1240px) 1104px, 100vw', true)}</div>
+<div class="frame hero-anim d4">${picture('library', 'Exo Launcher 3.28.0 game library on pure black with Real Liquid Glass top bar', '(min-width: 1240px) 1104px, 100vw', true)}</div>
 </section>
 
 <section class="wrap" data-reveal aria-labelledby="apps-title" data-tabs="apps">
@@ -154,7 +154,7 @@ ${header('/')}
 </ul>
 <div class="row"><a class="btn primary" href="/download/launcher" rel="nofollow"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-download"/></svg>Download</a><a class="btn" href="/launcher">See Launcher</a><a class="btn" href="/launcher/changelog">Changelog</a></div>
 </div>
-<div class="frame">${picture('game', 'Exo Launcher 3.27.0 zero-scroll game sheet for Beast of Reincarnation', '(min-width: 900px) 680px, 100vw', false)}</div>
+<div class="frame">${picture('game', 'Exo Launcher 3.28.0 zero-scroll game sheet for Beast of Reincarnation', '(min-width: 900px) 680px, 100vw', false)}</div>
 </div>
 <div role="tabpanel" class="tab-panel app-split" id="app-panel-cinema" aria-labelledby="app-tab-cinema" hidden>
 <div>
@@ -175,7 +175,7 @@ ${header('/')}
 <section class="wrap" data-reveal aria-labelledby="tour-heading" data-tabs="home-rooms">
 <div class="sec-head">
 <div>
-<span class="kicker">What\u2019s in 3.27.0</span>
+<span class="kicker">What\u2019s in 3.28.0</span>
 <h2 class="section" id="tour-heading">Inspect every room.</h2>
 <p class="sec-sub">Real Liquid Glass controls, zero-scroll game pages, native Discord calls, lossless Apple Music or Spotify control, clean uninstaller and USB device tuning.</p>
 </div>
@@ -186,7 +186,7 @@ ${header('/')}
 ${ROOMS.map(([id, , title, desc], i) =>
     `<div role="tabpanel" class="tab-panel stage-card" id="home-rpanel-${id}" aria-labelledby="home-rtab-${id}"${i === 0 ? '' : ' hidden'}>
 <div class="stage-caption"><h3>${title}</h3><p>${desc}</p></div>
-<div class="frame">${picture(id, `Exo Launcher 3.27.0 — ${title}`, '(min-width: 1240px) 1104px, 100vw', false)}</div>
+<div class="frame">${picture(id, `Exo Launcher 3.28.0 — ${title}`, '(min-width: 1240px) 1104px, 100vw', false)}</div>
 </div>`
   ).join('\n')}
 </section>
@@ -253,7 +253,7 @@ export function launcherPage() {
   ]
   return `${head({
     title: 'Exo Launcher for Windows 11: every game store in one library',
-    description: 'Exo Launcher 3.27.0 puts every game store, native Discord, music, Exo Shaders, PC cleanup and Exo Mouse on pure black with Real Liquid Glass.',
+    description: 'Exo Launcher 3.28.0 puts every game store, native Discord, music, Exo Shaders, PC cleanup and Exo Mouse on pure black with Real Liquid Glass.',
     path: '/launcher',
     ogSlot: 'launcher',
     ldJson: ld,
@@ -273,10 +273,10 @@ ${header('/launcher')}
 </div>
 <div class="hero-anim d4">${shaStrip('launcher')}</div>
 </div>
-<div class="frame hero-anim d3">${picture('library', 'Exo Launcher 3.27.0 Library grid and Real Liquid Glass bar', '(min-width: 900px) 700px, 100vw', true)}</div>
+<div class="frame hero-anim d3">${picture('library', 'Exo Launcher 3.28.0 Library grid and Real Liquid Glass bar', '(min-width: 900px) 700px, 100vw', true)}</div>
 </section>
 
-<section class="features" aria-label="What Exo Launcher 3.27.0 includes">
+<section class="features" aria-label="What Exo Launcher 3.28.0 includes">
 ${features.map(([slot, kicker, title, desc, flip]) =>
     `<div class="feature${flip ? ' flip' : ''}" data-reveal>
 <div>
@@ -284,7 +284,7 @@ ${features.map(([slot, kicker, title, desc, flip]) =>
 <h2 class="section">${title}</h2>
 <p class="lead">${desc}</p>
 </div>
-<div class="frame">${picture(slot, `Exo Launcher 3.27.0 — ${kicker}`, '(min-width: 900px) 700px, 100vw', false)}</div>
+<div class="frame">${picture(slot, `Exo Launcher 3.28.0 — ${kicker}`, '(min-width: 900px) 700px, 100vw', false)}</div>
 </div>`
   ).join('\n')}
 </section>
@@ -417,7 +417,7 @@ ${footer()}
 export function helpPage() {
   return `${head({
     title: 'Help · Exo',
-    description: 'Short answers for Exo Launcher 3.27.0 and Exo Cinema, the Exo Discord server, and a direct message form.',
+    description: 'Short answers for Exo Launcher 3.28.0 and Exo Cinema, the Exo Discord server, and a direct message form.',
     path: '/help',
     ogDescription: 'Short answers for each Exo app, the Exo Discord, and a contact form.',
   })}

@@ -1,11 +1,11 @@
 export const RELEASES = {
   launcher: {
     repo: 'UhhErix/Exo-Launcher',
-    tag: 'v3.27.0',
-    asset: 'ExoLauncher-3.27.0-Setup.exe',
-    version: '3.27.0',
-    bytes: 136287666,
-    sha256: '78aeaf5ef153c21fef59af8068d723669a82123062094b63ab4bb523900e1e9d',
+    tag: 'v3.28.0',
+    asset: 'ExoLauncher-3.28.0-Setup.exe',
+    version: '3.28.0',
+    bytes: 136392811,
+    sha256: '8338277e9609926b1d92fc6947c7be85072252a84e02f78c653ec1ec800059c9',
   },
   cinema: {
     repo: 'UhhErix/Exo-Cinema',
