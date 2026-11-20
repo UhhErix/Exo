@@ -22,9 +22,6 @@ const CSP = [
 ].join('; ')
 
 // Features not used by the site are denied. Only names Chromium knows: an unknown one logs an error on every page.
-// Google's Privacy Sandbox ad features (Topics, Protected Audience, Attribution Reporting, Shared Storage) are left
-// off the list: Chrome is retiring them, and a name it no longer knows is that error; the site loads no one else's
-// script that could call them anyway.
 const DENIED = [
   'accelerometer', 'ambient-light-sensor', 'bluetooth', 'camera', 'clipboard-read',
   'compute-pressure', 'cross-origin-isolated', 'display-capture', 'encrypted-media', 'fullscreen', 'gamepad',
@@ -36,7 +33,7 @@ const DENIED = [
 
 export const SECURITY_HEADERS = {
   'Content-Security-Policy': CSP,
-  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
   'Referrer-Policy': 'no-referrer',
   // Exo Cinema's page plays its clips by itself, and copies and shares its link.
   'Permissions-Policy': ['autoplay=(self)', 'clipboard-write=(self)', 'web-share=(self)', ...DENIED.map((name) => `${name}=()`)].join(', '),

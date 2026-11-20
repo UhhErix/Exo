@@ -1,0 +1,95 @@
+<h1>Privacy</h1>
+<p class="claim">No ads. Your data is never sold.</p>
+<div class="doc-layout">
+<nav class="toc" aria-label="On this page"><ol><li><a href="#what-stays-on-your-pc">What stays on your PC</a></li><li><a href="#exo-launcher">Exo Launcher</a></li><li><a href="#exo-cinema">Exo Cinema</a></li><li><a href="#this-site">This site</a></li><li><a href="#updates">Updates</a></li><li><a href="#contact-form">Contact form</a></li><li><a href="#security-and-questions">Security and questions</a></li></ol></nav>
+<div class="doc-body">
+<p>What each Exo app sends, and what stays on your PC, in Exo Launcher 3.25.0 and Exo Cinema 1.4.7. When an app changes what it sends, this page changes with it.</p>
+
+<section id="what-stays-on-your-pc">
+<h2>What stays on your PC</h2>
+<p>Each app keeps its data in its own folder on your PC. Exo Launcher keeps your library, settings and play time in <code>%LocalAppData%\ExoLauncher</code>, your captures in <code>Videos\Exo Captures</code> unless you choose another folder, your notes in <code>Documents\Exo Notes</code> and a daily backup in <code>Documents\Exo\Backups\Launcher</code>. Exo Cinema keeps its settings, Continue Watching, Watchlist and History in <code>%LocalAppData%\ExoCinema</code>, with your Jellyfin sign-in sealed by Windows' own protection. Uninstalling Exo Launcher keeps your games, settings and data, and removes the store tools and voice model it fetched. Uninstalling Exo Cinema keeps your data unless you choose to remove it there.</p>
+</section>
+
+<section id="exo-launcher">
+<h2>Exo Launcher</h2>
+<p>Your library, installs, updates and game launches work offline. There are no ads.</p>
+<p><b>Exo account.</b> Exo Launcher's account is an email address and a password; Exo Cinema 1.4.7 doesn't use it. Setup asks for it right after Welcome, and a new install that is online can't finish setup without it. Continue without an account appears only when Exo can't reach the account service, and Exo asks again at the next start. If you update from an older version, a sheet asks with Not now, and until you sign in a banner shows in your Library. If you hide it, it comes back a week later, up to three times. Signed in, it syncs your settings, play time, Riot and Xbox hours and custom covers between your PCs a couple of seconds after each change, when Exo starts and every 30 seconds while it runs. The account service, <code>accounts.getexo.app</code> on Exo's Cloudflare account, holds:</p>
+<ul>
+<li>a keyed digest of your email address (not the address itself) and a keyed digest of your recovery code (the code itself is shown once and never stored);</li>
+<li>your password as a hash, and the PCs signed in to the account, each by a random device ID, when it signed in and the day it was last used. A PC unused for 400 days is signed out and leaves the list. Each PC's sign-in tokens are kept only as a hash;</li>
+<li>your synced items, sealed with AES-256-GCM under a key Exo's account service holds: your preferences (not paths, window positions, GPU, display or Discord settings), one play time entry per play session, your Riot and Xbox hours, and the custom covers you choose, with the picture when it is small. Each item's kind, name and times are not sealed, and for a cover or Xbox hours that name is the game's store ID. The seal protects the stored copy if it is stolen, not from Exo;</li>
+<li>each time you type your password or recovery code, a keyed digest of your email address and of your IP address with a count of wrong tries, kept for 15 to 30 minutes, and after wrong tries a count under the email digest alone, kept an hour, to slow down guessing. Expired counts are removed at the next sign-in on the service.</li>
+</ul>
+<p>Your IP address is read as the key for Cloudflare's rate limiter, and is not stored there.</p>
+<p>It never sees your store or Riot sign-ins, your Discord data, your voice, your logs or the files in your library. On your PC the session token is encrypted with Windows for your Windows user. In <b>Settings &gt; Account</b> you can see and remove signed-in PCs, change your password, make a new recovery code, export your data as a JSON file, sign out and delete the account. Deleting it removes the account and its items from the service, and keeps the data on your PC.</p>
+<p><b>The older account.</b> If you made an Exo account with Exo Launcher 3.3 or earlier, that older service has been shut down and its data deleted, so it no longer holds anything about you.</p>
+<p><b>Usage data and crash reports are off until you choose to share them.</b> Exo asks in one screen, <b>Help improve Exo</b>, after first-run setup and once after the update that added it. It has two equal buttons, <b>Share app data</b> and <b>Don't share</b>, and a separate switch for crash reports. Nothing is ticked in advance, and closing the screen counts as <b>Don't share</b>. You can change either choice any time in <b>Settings &gt; Privacy</b>.</p>
+<ul>
+<li><b>Usage data</b>, only with Share app data on: a short record of events such as how long startup took, how long a session lasted, which room you opened, that you launched a game (no game name), your library's size as a range, the versions an update went from and to, memory use as a range, and the kind of store or update error, each with Exo's version and channel, your install ID and a random ID for that session. Never names, game names, file paths, web addresses, your library's contents, Discord, or anything in your Exo account. Sent to <code>reports.getexo.app</code>, Exo's own Cloudflare Worker, at most every five minutes. Raw events are kept 90 days; after that only totals remain, with no install ID.</li>
+<li><b>Crash reports</b>, only with Send crash reports on: Exo's version, your Windows build (numbers only), the error's type, a log excerpt of at most 8 KB and your install ID. Paths, web addresses, names, IDs, tokens and the names of your games are taken out on your PC first. Kept 30 days. The first report of an error in a version, and its 10th, 100th and 1000th, are also sent to the person who runs Exo by email, with the app, version, Windows build, error type and the end of the scrubbed log. Those copies are kept until deleted by hand. A count of reports per error and day, with no install ID, is kept 90 days. One report of the same error per UTC day, and five a day at most. With the switch off, nothing is sent.</li>
+<li><b>Your install ID</b> is a random ID, one per app on this PC, not tied to your Exo account, your Windows account or your hardware. It is replaced every 90 days and whenever you choose <b>Delete my data</b> in Settings &gt; Privacy, which removes what Exo's server holds under it (not those emailed copies). <b>View what's sent</b> there shows the last 20 payloads exactly as they left.</li>
+</ul>
+<p><b>Backups.</b> Once a day Exo backs up your settings, library folders, collections, custom covers, play time, Riot hours and notes to <code>Documents\Exo\Backups\Launcher</code>, and keeps the newest 30 days. A backup never holds a sign-in, token or account session, and is not sent anywhere.</p>
+<p><b>Sign-ins stay on your PC.</b> Epic, GOG and Amazon sign-ins stay with their own tools (Legendary, gogdl and Nile). If you sign in to Steam in <b>Settings &gt; Library</b>, Exo sends Steam your PC's name, an ID made from your PC's and Windows user's names, and, when you sign in with a password, your account name and your password encrypted for Steam. It keeps only Steam's sign-in tokens, protected on this PC, and reads your library from Steam with them. Sign out removes them. Your Riot ID is encrypted with Windows. The Discord room's sign-in is encrypted on this PC and sent only to Discord. Exo asks for no API keys.</p>
+<p><b>Other requests</b> go to the services each feature needs:</p>
+<ul>
+<li>updates, the store tools, the voice model, upscaler files and frame generation mods, from Exo's own copy at <code>updates.getexo.app</code>, each checked before use: by its SHA-256, and an upscaler file by its maker's signature, version and size;</li>
+<li>two codec libraries for Exo Shaders (Oodle and zlib-ng), from their makers' release pages on GitHub, only when a game it compiles needs one, checked against its SHA-256. Lucid, the headphone EQ, asks its maker's GitHub page for its own newest version, and for Equalizer APO's installer when you set it up;</li>
+<li>game runtimes and app installers (Visual C++, DirectX, .NET, WebView2, PhysX, OpenAL, Epic's launcher), from their makers, only when you choose to install one, each checked against the SHA-256 built into Exo (for .NET, the SHA-512 in Microsoft's list) and its maker's signature, and Epic's launcher by its host and its publisher's signature. Microsoft's list of .NET versions is read whenever Game runtimes shows, at most every six hours;</li>
+<li>your store sign-ins, library and installs, to each store; your SteamID64, to Steam's public game list when your profile is public; an installed Epic game's name, to Legendary's list of parts you can leave out;</li>
+<li>game titles and store IDs, to the stores and to Exo's cover cache at <code>covers.getexo.app</code> for cover art, and to PCGamingWiki to learn whether a game outputs HDR (only on an HDR screen, or a Radeon with Fluid Motion Frames);</li>
+<li>your Riot ID, to tracker.gg, once and when you press Re-import, to read your Valorant and League hours;</li>
+<li>search terms, Steam app IDs and the names of games you play from other stores, to Steam and CheapShark for the Store's pages and prices;</li>
+<li>your graphics card's model, to NVIDIA and AMD for their newest driver, and on a Radeon RX 7000 or 9000 your driver's version to AMD's release notes (Intel's graphics pages are read and matched on your PC); your card's generation, to NVIDIA for its Audio Effects package when you download RTX Noise Removal; your board's or laptop's model, to ASUS for its newest BIOS. Requests that name nothing of yours read Intel's and Realtek's driver pages, Sony's DualSense firmware list and Microsoft's Windows release page;</li>
+<li>pictures of your devices, from their makers' image servers, OpenMouse, or for some devices an authorized store such as Best Buy or MaxGaming, with no cookies and nothing about you beyond which product's picture is asked for;</li>
+<li>what you do in the Discord room, to Discord, and a card you add in its Shop, to Stripe, Discord's payment service. Each time it connects, Exo turns off your Discord account's data and privacy switches and sets its language and time format to your PC's, on Discord, for all your devices. A file for an app's command goes to Discord's upload storage on Google Cloud (<code>storage.googleapis.com</code>). GIFs load from the hosts Discord points to;</li>
+<li>what you play and browse in the Music room, to your music service; a YouTube Music song's title, artists, album and length, to LRCLIB for timed lyrics; the video playing, to SponsorBlock; a Spotify song's public link, to Spotify for its cover when the player names none; a Spotify share link you paste or open, to Spotify to learn what it opens.</li>
+</ul>
+<p><b>Exo's relay.</b> Your song in an end-to-end encrypted Discord call, with your Discord user ID, the game you play if you turn on sharing with friends who use Exo, and that a game is installing, building its shaders or ready if you also turn on Share when I'm getting ready, go end-to-end encrypted through Exo's relay on Cloudflare.</p>
+<ul>
+<li>The relay can't read them. It sees your IP address, when each sealed message is sent, and for friends a random name per pair that stays the same from one day to the next, so it could tell that the same two IP addresses keep talking.</li>
+<li>With sharing on, your friend link's public key is put in your Discord presence, where software that reads raw presence could see that you use Exo with sharing on.</li>
+</ul>
+<p><b>Gifts.</b> To show gifts waiting for you, Exo reads Steam's and Epic's own gifts pages in a hidden browser, signed in as you, when you open the Library (at most every half hour) or refresh it, and every half hour while Exo is in front and you're not playing. Steam's page needs one sign-in there, which stays in that browser's profile on this PC until you sign out there; Epic's is signed in with a one-time code from Exo's Epic sign-in. Gift names, senders and messages are shown, and never kept or sent anywhere else.</p>
+<p>Your list of games, install folders and store sign-ins are never uploaded; only the items listed under Exo account go to your account.</p>
+</section>
+
+<section id="exo-cinema">
+<h2>Exo Cinema</h2>
+<p><b>Crash, freeze and error reports are on by default</b>, with no switch. Exo Cinema sends one to <code>reports.getexo.app</code> when it crashes (at its next start), when its window stops answering for five seconds, when a film ends with a playback error, when your Jellyfin server doesn't answer three times in a row, and when an add-on fails to load. It has no Exo account and no usage tracking.</p>
+<ul>
+<li>A report holds the app's name and version, the Windows build, the error's name and about 8 KB of log lines. Every address, file path, file name, title, user and machine name, email and token is taken out on your PC first; the service checks it again and refuses a report that still holds any of them.</li>
+<li>No install ID. The report service sees your IP address while it answers, and doesn't store it. One report per kind of error a day, five a day at most. Deleted after 30 days. The first report of an error in a version, and its 10th, 100th and 1000th, are also sent to the person who runs Exo by email, with the app, version, Windows build, error type and the end of the scrubbed log. Those copies are kept until deleted by hand. A count of reports per error and day, with no install ID, is kept 90 days. <b>Settings &gt; About &gt; Diagnostics</b> says what a report holds.</li>
+</ul>
+<p>Titles and their pictures come from Cinemeta, Stremio's public catalog, and its picture hosts, MetaHub and TMDB, which see your IP address and what you look at, as any website does. A Jellyfin server you connect to gets your user name and password when you press Connect, unencrypted if its address is http and not on your own network. It then sees what you browse and play, keeps your place as every Jellyfin app does, and gets your PC's name and an ID for it, which it lists among its devices and other apps on your account can read. An add-on you add sees what you browse and play through it, and your IP address. A title known only by its TMDB ID is looked up once on Wikidata by that ID, for its IMDb ID. Exo Cinema runs on Microsoft Edge WebView2, which updates itself through Microsoft and may send diagnostic data as your Windows privacy settings allow. If it is missing, Setup downloads it from Microsoft. Continue Watching, the Watchlist and History stay on your PC. Nothing you watch is sent to Exo: never a title, a file name or a web address.</p>
+</section>
+
+
+<section id="this-site">
+<h2>This site</h2>
+<p>getexo.app counts visits with <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>, whose small script your browser loads from <code>static.cloudflareinsights.com</code>. It needs no cookies and stores nothing on your device, so there is no banner to click. It records the page, the site that sent you, your browser and country, and how fast the page loaded. It doesn't record your IP address, follow you to other sites or fingerprint your device. Cloudflare keeps the full counts for 7 days and a sample after that.</p>
+<p>The site's own server keeps no logs and sets no cookies. Download sends you to Exo's update address, <code>updates.getexo.app</code>, which sees your IP address while it answers and keeps no logs.</p>
+</section>
+
+<section id="updates">
+<h2>Updates</h2>
+<p>Each app asks Exo's own update address, <code>updates.getexo.app</code>, for a new version, and offers it. The address sees your IP address while it answers, and keeps no logs. Exo Cinema 1.4.7 asks GitHub instead if that address doesn't answer, for the newest version and for the download. For Exo Cinema, in the minutes before Exo's own copy of a new release is there, the download comes from GitHub, which sees your IP address and the app's version. Every download is checked against its SHA-256 before it is installed.</p>
+</section>
+
+<section id="contact-form">
+<h2>Contact form</h2>
+<p>The form on <a href="/help">the help page</a> sends a message to Exo's own Cloudflare Worker, <code>reports.getexo.app</code>.</p>
+<ul>
+<li><b>What is kept:</b> the message, the app it is about (Launcher, Cinema or other), the day it arrived, and your email address only if you type one for a reply.</li>
+<li><b>Where:</b> in storage on Exo's Cloudflare account, deleted after 90 days.</li>
+<li><b>Emailed:</b> each message, with the app it is about, is also emailed through Cloudflare's email service to the person who runs Exo, at a mailbox outside getexo.app, with your email address as the reply address when you give one. That copy is kept until it is deleted by hand.</li>
+<li><b>Your IP address</b> is read once, as the key for Cloudflare's rate limiter, to allow five messages a minute from one address. It is never stored or emailed, and no cookie or other identifier is kept.</li>
+</ul>
+</section>
+<section id="security-and-questions">
+<h2>Security and questions</h2>
+<p>Report a security problem privately through <a href="/help">the help page</a>, and name the app it is about. Licence terms are on the <a href="/license">licence page</a>.</p>
+<p>Last updated 9 November 2026.</p>
+</section>
+</div>
+</div>

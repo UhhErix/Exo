@@ -4,7 +4,14 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { CHANGELOG_APPS, changelogUrl, renderChangelog, releases } from '../src/changelog.js'
 
-const ASSETS = { font: 'geist.aaaaaaaaaa.woff2', css: 'site.bbbbbbbbbb.css', og: 'og.cccccccccc.jpg' }
+const ASSETS = {
+  font: 'exoline.aaaaaaaaaa.woff2',
+  css: 'site.bbbbbbbbbb.css',
+  js: 'site.dddddddddd.js',
+  og: 'og-launcher.cccccccccc.jpg',
+  ogLauncher: 'og-launcher.cccccccccc.jpg',
+  ogCinema: 'og-cinema.eeeeeeeeee.jpg',
+}
 const TEMPLATE = readFileSync(new URL('../src/changelog.html', import.meta.url), 'utf8')
 
 test('a release is a section with its heading, paragraphs and bullets', () => {
@@ -35,10 +42,12 @@ test('the Verified/Checked note at the end of a bullet is dropped', () => {
 })
 
 test('a page fills every placeholder and nothing else', () => {
-  const page = renderChangelog(TEMPLATE, { app: 'launcher', name: 'Launcher', home: '/' }, '## 1.0.0\n- Notes with {{app}} inside.\n', ASSETS)
+  const page = renderChangelog(TEMPLATE, { app: 'launcher', name: 'Launcher', home: '/launcher' }, '## 1.0.0\n- Notes with {{app}} inside.\n', ASSETS)
   assert.ok(page.includes('<title>Exo Launcher changelog · Exo</title>'))
-  assert.ok(page.includes('/assets/geist.aaaaaaaaaa.woff2'))
+  assert.ok(page.includes('/assets/exoline.aaaaaaaaaa.woff2'))
   assert.ok(page.includes('/assets/site.bbbbbbbbbb.css'))
+  assert.ok(page.includes('/assets/site.dddddddddd.js'))
+  assert.ok(page.includes('/assets/og-launcher.cccccccccc.jpg'))
   assert.ok(page.includes('{{app}} inside'), 'a placeholder inside a release is text, not filled again')
   assert.ok(!/\{\{\w+\}\}/.test(page.replace('{{app}} inside', '')), 'no placeholder is left unfilled')
 })

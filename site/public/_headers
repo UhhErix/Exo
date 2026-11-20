@@ -1,7 +1,7 @@
 # Written by build.mjs from src/headers.js.
 /*
   Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js https://static.cloudflareinsights.com/beacon.min.js/; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self' https://reports.getexo.app; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests
-  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Referrer-Policy: no-referrer
   Permissions-Policy: autoplay=(self), clipboard-write=(self), web-share=(self), accelerometer=(), ambient-light-sensor=(), bluetooth=(), camera=(), clipboard-read=(), compute-pressure=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), publickey-credentials-create=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), storage-access=(), sync-xhr=(), usb=(), window-management=(), xr-spatial-tracking=()
   X-Content-Type-Options: nosniff
@@ -9,14 +9,26 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   NEL: {"max_age":0}
+
+/*.html
+  Cache-Control: public, max-age=60, stale-while-revalidate=3600
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/brand/*
+  Cache-Control: public, max-age=86400
+
 /cinema-assets/*
   Cache-Control: public, max-age=31536000, immutable
+
 /robots.txt
   Cache-Control: public, max-age=86400
 
 /sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/feed.xml
   Cache-Control: public, max-age=86400
 
 /site.webmanifest

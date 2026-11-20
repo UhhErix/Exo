@@ -1,5 +1,6 @@
 User-agent: *
-Disallow: /download/
 Disallow: /api/
+Disallow: /download/launcher
+Disallow: /download/cinema
 
 Sitemap: https://getexo.app/sitemap.xml
