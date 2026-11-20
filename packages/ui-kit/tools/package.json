@@ -1,7 +1,0 @@
-{
-  "name": "exo-native-tools",
-  "private": true,
-  "type": "module",
-  "scripts": { "icons": "node gen-icons.mjs" },
-  "dependencies": { "@tabler/icons": "3.50.0" }
-}
