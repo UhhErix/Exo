@@ -11,7 +11,7 @@ The build also fetches the three apps' changelogs from the existing update servi
 
 ## Releases
 
-**Edit only `src/releases.js`** for each app's repository, release tag, asset, version, byte size and SHA-256. Installer links use GitHub's tag-pinned `releases/download/<tag>/<asset>` form so the installer matches the displayed version and checksum even after a newer release. The current tags are `v3.27.0` for Launcher and `v1.5.2` for Cinema. Release-history links use `/releases`; the generic latest-release link uses `/releases/latest`.
+**Edit only `src/releases.js`** for each app's repository, release tag, asset, version, byte size and SHA-256. Installer links use GitHub's tag-pinned `releases/download/<tag>/<asset>` form so the installer matches the displayed version and checksum even after a newer release. The current tags are `v3.28.0` for Launcher and `v1.5.2` for Cinema. Release-history links use `/releases`; the generic latest-release link uses `/releases/latest`.
 
 Launcher links use UhhErix/Exo-Launcher; Cinema links use UhhErix/Exo-Cinema. Each has its own source and release-history link. `/download/launcher` and `/download/cinema` issue 302 redirects, including through the www Worker. Metadata routes read the same constant, never update manifests. The sizes/checksums are documented in the app repositories' RELEASES.md.
 

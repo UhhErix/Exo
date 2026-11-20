@@ -80,7 +80,7 @@ if (reveals.length) {
   }
 }
 
-// 4. Sliding pill segmented tabs (apps switcher & Launcher 3.27 room tour)
+// 4. Sliding pill segmented tabs (apps switcher & Launcher 3.28 room tour)
 for (const container of document.querySelectorAll('[data-tabs]')) {
   const tablist = container.querySelector('[role="tablist"]')
   const pill = container.querySelector('[data-tab-pill]')
