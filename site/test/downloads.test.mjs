@@ -22,7 +22,7 @@ const staticEnv = { ASSETS: { fetch: () => new Response('Not found', { status: 4
 
 test('installer URLs stay pinned to the configured release tags', () => {
   assert.equal(downloadUrl('launcher'), 'https://github.com/UhhErix/Exo-Launcher/releases/download/v3.27.0/ExoLauncher-3.27.0-Setup.exe')
-  assert.equal(downloadUrl('cinema'), 'https://github.com/UhhErix/Exo-Cinema/releases/download/v1.5.1/ExoCinema-1.5.1-Setup.exe')
+  assert.equal(downloadUrl('cinema'), 'https://github.com/UhhErix/Exo-Cinema/releases/download/v1.5.2/ExoCinema-1.5.2-Setup.exe')
 })
 
 for (const [name, handler] of [['site', worker], ['edge', edge], ['www', www]]) {

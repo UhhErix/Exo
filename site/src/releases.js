@@ -9,11 +9,11 @@ export const RELEASES = {
   },
   cinema: {
     repo: 'UhhErix/Exo-Cinema',
-    tag: 'v1.5.1',
-    asset: 'ExoCinema-1.5.1-Setup.exe',
-    version: '1.5.1',
-    bytes: 63026926,
-    sha256: '1dcda15c07741e64f5f3f046c483fb4585ab79923367b7a233739e24435c145e',
+    tag: 'v1.5.2',
+    asset: 'ExoCinema-1.5.2-Setup.exe',
+    version: '1.5.2',
+    bytes: 63045208,
+    sha256: '6e6f5742ca89bd3b068e4a7ad8297bd84f7bdc6bdb18266d7cd115e5bc9b1b53',
   },
 }
 
