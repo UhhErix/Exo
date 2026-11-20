@@ -28,7 +28,7 @@ const REQUIRED = {
 test('exo_tokens.rs declares every const exo-design uses, with the same type', () => {
   for (const [type, names] of Object.entries(REQUIRED)) {
     for (const name of names) {
-      const re = new RegExp(`pub const ${name}: ${type.replace('f32', 'f32')}\\b`)
+      const re = new RegExp(`pub const ${name}: ${type}\\b`)
       assert.match(src, re, `${name}: ${type}`)
     }
   }

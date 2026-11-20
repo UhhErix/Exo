@@ -19,14 +19,23 @@ const root = path.join(here, 'node_modules/@tabler/icons/icons')
 const version = JSON.parse(fs.readFileSync(path.join(here, 'node_modules/@tabler/icons/package.json'), 'utf8')).version
 const output = path.resolve(here, '../crates/exo-design/src/icons_gen.rs')
 
+const stripComments = (raw) => {
+  let prev = ''
+  let cur = raw
+  while (cur !== prev) {
+    prev = cur
+    cur = cur.replace(/<!--[\s\S]*?-->/g, '')
+  }
+  return cur.replace(/<!--|-->/g, '')
+}
+
 const missing = []
 const rows = Object.entries(TABLER).sort(([a], [b]) => (a < b ? -1 : 1)).map(([name, tabler]) => {
   const filled = tabler.endsWith('-filled')
   const file = filled ? `filled/${tabler.slice(0, -7)}.svg` : `outline/${tabler}.svg`
   const full = path.join(root, file)
   if (!fs.existsSync(full)) { missing.push(`${name} -> ${tabler}`); return null }
-  const svg = fs.readFileSync(full, 'utf8')
-    .replace(/<!--[\s\S]*?-->/g, '')
+  const svg = stripComments(fs.readFileSync(full, 'utf8'))
     .replace(/\s*\n\s*/g, ' ')
     .replace(/class="[^"]*"\s*/g, '')
     .replace(/stroke="currentColor"/g, 'stroke="#000"')
