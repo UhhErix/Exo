@@ -1,0 +1,51 @@
+name: Site & Design
+
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - 'workers/exo-site/**'
+      - 'workers/exo-www/**'
+      - 'packages/design-system/**'
+      - '.github/workflows/site-and-design.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'workers/exo-site/**'
+      - 'workers/exo-www/**'
+      - 'packages/design-system/**'
+      - '.github/workflows/site-and-design.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-and-design-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Site & Design tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install and test site
+        run: |
+          npm ci --prefix site --no-audit --no-fund
+          npm test --prefix site
+
+      - name: Check and test design-system tokens
+        run: |
+          npm run check --prefix packages/design-system
+          node --test packages/design-system/tests/contrast.test.mjs packages/design-system/tests/generate.test.mjs packages/design-system/tests/motion.test.mjs packages/design-system/tests/schema.test.mjs
