@@ -20,13 +20,21 @@ const version = JSON.parse(fs.readFileSync(path.join(here, 'node_modules/@tabler
 const output = path.resolve(here, '../crates/exo-design/src/icons_gen.rs')
 
 const stripComments = (raw) => {
-  let prev = ''
-  let cur = raw
-  while (cur !== prev) {
-    prev = cur
-    cur = cur.replace(/<!--[\s\S]*?-->/g, '')
+  let out = raw
+  for (;;) {
+    const start = out.indexOf('<!--')
+    if (start === -1) break
+    const closeStd = out.indexOf('-->', start + 4)
+    const closeAlt = out.indexOf('--!>', start + 4)
+    if (closeStd === -1 && closeAlt === -1) {
+      out = out.slice(0, start)
+      break
+    }
+    const useAlt = closeAlt !== -1 && (closeStd === -1 || closeAlt < closeStd)
+    const end = useAlt ? closeAlt + 4 : closeStd + 3
+    out = out.slice(0, start) + out.slice(end)
   }
-  return cur.replace(/<!--|-->/g, '')
+  return out
 }
 
 const missing = []
