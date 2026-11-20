@@ -7,13 +7,11 @@ Shared resources for [Exo Launcher](https://github.com/UhhErix/Exo-Launcher) and
 | --- | --- |
 | [`site/`](site) | getexo.app source snapshot |
 | [`workers/`](workers) | Self-hostable site, update and app services |
-| [`packages/`](packages) | Native UI kit and design system |
+| [`packages/`](packages) | Shared design system |
 
 ## Build and test
 
-From the repository root, use Node.js and npm for the website and design system,
-and the Rust toolchain described in the [UI kit README](packages/ui-kit/README.md)
-for the native UI workspace:
+From the repository root, use Node.js and npm for the website and design system:
 
 ```sh
 npm ci --prefix site
@@ -24,9 +22,6 @@ npm run build --prefix packages/design-system
 npm test --prefix packages/design-system
 
 node --test workers/exo-updates/test/worker.test.mjs
-
-cargo build --manifest-path packages/ui-kit/Cargo.toml
-cargo test --manifest-path packages/ui-kit/Cargo.toml
 ```
 
 The [site README](site/README.md) describes generated assets and the network access

@@ -7,21 +7,10 @@ updates:
   - package-ecosystem: npm
     directories:
       - "/packages/design-system"
-      - "/packages/ui-kit/tools"
       - "/site"
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
     groups:
       npm-minor-and-patch:
-        update-types: [minor, patch]
-  - package-ecosystem: cargo
-    directories:
-      - "/packages/ui-kit"
-      - "/packages/ui-kit/examples/hello-exo"
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 5
-    groups:
-      cargo-minor-and-patch:
         update-types: [minor, patch]
