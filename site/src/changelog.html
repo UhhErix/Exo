@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Exo {{name}} changelog · Exo</title>
-<meta name="description" content="Every release of Exo {{name}}.">
+<meta name="description" content="Every release of Exo {{name}}, straight from the app's release history.">
 <link rel="canonical" href="https://getexo.app/{{app}}/changelog">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#000000">
@@ -21,19 +21,49 @@
 <meta property="og:url" content="https://getexo.app/{{app}}/changelog">
 <meta property="og:image" content="https://getexo.app/assets/{{og}}">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="675">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://getexo.app/assets/{{og}}">
+<script type="module" src="/assets/{{js}}"></script>
 </head>
 <body>
-<main class="doc">
-<a href="{{home}}" aria-label="Exo {{name}}"><img class="icon" src="/exo-192.png" alt="" width="40" height="40"></a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar" data-bar>
+<div class="bar-inner">
+<a class="brand" href="/" aria-label="Exo home"><img class="mark" src="/favicon.svg" alt="" width="30" height="30"><span>Exo</span></a>
+<nav aria-label="Main">
+<div class="bar-menu-wrap" data-menu-wrap>
+<button class="bar-menu" type="button" aria-expanded="false" aria-controls="bar-links"><span>Apps</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6l6-6"/></svg></button>
+<div class="bar-links" id="bar-links">
+<a href="/launcher">Launcher</a><a href="/cinema">Cinema</a><a href="/launcher/changelog" aria-current="page">Changelog</a><a href="/help">Help</a>
+</div>
+</div>
+<a class="btn primary small bar-dl" href="/download"><span>Download</span></a>
+</nav>
+</div>
+</header>
+<main id="main" class="doc">
+<div class="doc-head">
+<span class="kicker">Release history</span>
 <h1>Exo {{name}} changelog</h1>
-<a class="download" href="/download/{{app}}" rel="nofollow">Download for Windows 11</a>
+<p class="claim">Every release note for Exo {{name}}, updated automatically from the update service.</p>
+<div class="row">
+<a class="btn primary" href="/download/{{app}}" rel="nofollow"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5l5-5m-5-7v12"/></svg>Download for Windows 11</a>
+<a class="btn" href="{{home}}">About Exo {{name}}</a>
+<a class="btn" href="/feed.xml">Atom feed</a>
+</div>
+</div>
+<div class="cl">
 {{releases}}
+</div>
 </main>
-<footer>
-<nav aria-label="Site"><a href="/privacy">Privacy</a><a href="/license">License</a><a href="https://github.com/UhhErix">GitHub</a><a href="https://discord.gg/44mXWhaHP4">Discord</a></nav>
-<p>© 2026 Erix (UhhErix). Exo isn't affiliated with or endorsed by Valve, Discord, Spotify, NVIDIA or the other companies and projects whose services and software it works with. Their names and marks belong to their owners.</p>
+<footer class="foot">
+<div class="foot-top">
+<a class="brand" href="/" aria-label="Exo home"><img class="mark" src="/favicon.svg" alt="" width="28" height="28"><span>Exo</span></a>
+<p class="foot-promise">No ads. Your data is never sold.</p>
+</div>
+<nav aria-label="Footer"><a href="/launcher">Launcher</a><a href="/cinema">Cinema</a><a href="/download">Download</a><a href="/launcher/changelog">Launcher changelog</a><a href="/cinema/changelog">Cinema changelog</a><a href="/privacy">Privacy</a><a href="/license">License</a><a href="/source">Source</a><a href="/help">Help</a><a href="https://discord.gg/44mXWhaHP4">Discord</a></nav>
+<p>© 2026 Erix. Exo isn't affiliated with or endorsed by Valve, Discord, Spotify, NVIDIA, Jellyfin, mpv, Microsoft or the other companies whose software it works with. Their names and marks belong to their owners.</p>
 </footer>
 </body>
 </html>

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://getexo.app/</loc></url>
+<url><loc>https://getexo.app/launcher</loc></url>
 <url><loc>https://getexo.app/cinema</loc></url>
+<url><loc>https://getexo.app/download</loc></url>
+<url><loc>https://getexo.app/launcher/changelog</loc></url>
 <url><loc>https://getexo.app/cinema/changelog</loc></url>
+<url><loc>https://getexo.app/help</loc></url>
+<url><loc>https://getexo.app/source</loc></url>
 <url><loc>https://getexo.app/privacy</loc></url>
 <url><loc>https://getexo.app/license</loc></url>
-<url><loc>https://getexo.app/launcher/changelog</loc></url>
+<url><loc>https://getexo.app/legal/earlier-apps</loc></url>
 </urlset>

@@ -1,11 +1,8 @@
 // The Changelog pages. build.mjs writes each one into public/ and the Worker renders the same page at the edge, so both
 // use these functions and the one template, src/changelog.html. Nothing here touches the network or Node.
 
-/** The apps with a Changelog page: the page's path is /<app>/changelog, and its releases come from the update address's CHANGELOG.md. */
-import { downloadUrl, releasesUrl } from './releases.js'
-
 export const CHANGELOG_APPS = [
-  { app: 'launcher', name: 'Launcher', home: '/' },
+  { app: 'launcher', name: 'Launcher', home: '/launcher' },
   { app: 'cinema', name: 'Cinema', home: '/cinema' },
   { app: 'browser', name: 'Browser', home: '/' },
 ]
@@ -37,14 +34,19 @@ export function releases(markdown) {
   }).join('\n')
 }
 
-/**
- * The whole page: the template with {{app}}, {{name}}, {{home}}, {{releases}} and the build's asset names (`assets`:
- * { font, css, og }) filled in. Filled values are not scanned again, and an unknown placeholder throws.
- */
 export function renderChangelog(template, { app, name, home }, markdown, assets) {
-  const fill = { app, name, home, releases: releases(markdown), ...assets }
+  const og = app === 'cinema' ? (assets.ogCinema || assets.og) : (assets.ogLauncher || assets.og)
+  const fill = {
+    app,
+    name,
+    home,
+    releases: releases(markdown),
+    ...assets,
+    og,
+    js: assets.js || 'site.js',
+  }
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => {
     if (!(key in fill)) throw new Error(`changelog.html has {{${key}}}, and nothing fills it`)
     return fill[key]
-  }).replace(/href="\/download\/[^"]+"/g, `href="${downloadUrl(app) || releasesUrl('launcher')}"`)
+  })
 }

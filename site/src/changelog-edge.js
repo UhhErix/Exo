@@ -8,11 +8,10 @@ import template from './changelog.html'
 import assets from './assets.json'
 import { CHANGELOG_APPS, changelogUrl, renderChangelog } from './changelog.js'
 
-const FRESH_MS = 15 * 60 * 1000 // CHANGELOG_FRESH_SECONDS, when set, is for tests: a shorter window to see the refresh
+const FRESH_MS = 15 * 60 * 1000
 const KEEP_SECONDS = 24 * 60 * 60
 const TIMEOUT_MS = 8000
 const MAX_BYTES = 4 * 1024 * 1024
-// One upstream request per app at a time, however many visitors arrive while it runs.
 const running = new Map()
 
 /** The page for /<app>/changelog. `ctx` is the fetch's ExecutionContext, for the refresh that runs after the response. */
@@ -29,22 +28,28 @@ export async function changelogResponse(app, request, env, ctx) {
   }
   const html = await refresh(entry, env, cache, key, null)
   if (html) return page(html, 'upstream')
-  // Nothing kept and GitHub unavailable: the page build.mjs wrote, from the same template.
   const fallback = await env.ASSETS.fetch(request)
-  return new Response(fallback.body, { status: fallback.status, headers: { ...Object.fromEntries(fallback.headers), 'cache-control': 'public, max-age=60', 'x-changelog': 'static' } })
+  return new Response(fallback.body, {
+    status: fallback.status,
+    headers: {
+      ...Object.fromEntries(fallback.headers),
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'public, max-age=60, stale-while-revalidate=3600',
+      'x-changelog': 'static',
+    },
+  })
 }
 
 function page(html, source) {
   return new Response(html, {
     headers: {
       'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'public, max-age=300, s-maxage=900, stale-while-revalidate=86400',
+      'cache-control': 'public, max-age=60, stale-while-revalidate=3600',
       'x-changelog': source,
     },
   })
 }
 
-/** { html, triedAt, etag } from the Cache API, or null. A cache that fails is the same as an empty one. */
 async function read(cache, key) {
   try {
     const hit = cache && (await cache.match(key))
@@ -62,7 +67,7 @@ async function store(cache, key, { html, triedAt, etag }) {
       headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': `public, max-age=${KEEP_SECONDS}`, 'x-tried-at': String(triedAt), 'x-etag': etag || '' },
     }))
   } catch {
-    // The page still goes out; it just isn't kept.
+    // Serve page even if Cache API write fails.
   }
 }
 
@@ -71,7 +76,6 @@ function refresh(entry, env, cache, key, kept) {
   return running.get(entry.app)
 }
 
-/** Asks the update address, once. Returns the page to serve, or null when there is none. */
 async function load(entry, env, cache, key, kept) {
   const triedAt = Date.now()
   const headers = { 'user-agent': 'exo-site' }
@@ -97,7 +101,6 @@ async function load(entry, env, cache, key, kept) {
   }
 }
 
-/** The body as text, read at most MAX_BYTES: a bigger file is an error, not a page to render. */
 async function readCapped(response) {
   if (Number(response.headers.get('content-length')) > MAX_BYTES) throw new Error('too large')
   const reader = response.body.getReader()
