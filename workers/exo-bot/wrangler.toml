@@ -1,0 +1,32 @@
+# Exo Bot: answers in #help with Workers AI and files bug reports to the forum. Recovered from the live deployment's source map.
+# Secrets: DISCORD_BOT_TOKEN, DISCORD_PUBLIC_KEY (`wrangler secret put`). The gateway Durable Object keeps the bot connected;
+# the every-minute cron makes sure it is.
+name = "exo-bot"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[vars]
+DISCORD_APPLICATION_ID = "REPLACE_WITH_APPLICATION_ID"
+GUILD_ID = "REPLACE_WITH_GUILD_ID"
+
+# knowledge.md (what the bot knows about Exo) is imported as text.
+[[rules]]
+type = "Text"
+globs = ["**/*.md"]
+
+[ai]
+binding = "AI"
+
+[[durable_objects.bindings]]
+name = "GATEWAY"
+class_name = "Gateway"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Gateway"]
+
+[triggers]
+crons = []

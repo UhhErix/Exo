@@ -1,0 +1,40 @@
+# Exo performance results: contributors send signed game benchmarks, the Worker aggregates them in D1. `src/worker.js` is the
+# deployed bundle (its source map was not kept); the `// src/<file>.js` comments mark the original modules. Secret:
+# CONTRIBUTOR_SECRET. Live it aggregates hourly; the schedule is not imported.
+name = "exo-perf"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[placement]
+mode = "smart"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "exo-perf"
+database_id = "REPLACE_WITH_RESOURCE_ID"
+
+[[ratelimits]]
+name = "PER_NETWORK"
+namespace_id = "5101"
+simple = { limit = 30, period = 60 }
+
+[[ratelimits]]
+name = "PER_CONTRIBUTOR"
+namespace_id = "5102"
+simple = { limit = 6, period = 60 }
+
+[[ratelimits]]
+name = "CEILING"
+namespace_id = "5103"
+simple = { limit = 600, period = 60 }
+
+[[ratelimits]]
+name = "PULL_PER_NETWORK"
+namespace_id = "5104"
+simple = { limit = 120, period = 60 }
+
+[triggers]
+crons = []

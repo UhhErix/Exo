@@ -1,0 +1,23 @@
+# Exo telemetry: stores the apps' anonymous usage events in D1 and summarises them daily. `src/worker.js` is the deployed
+# bundle (its source map was not kept); the comments mark the original modules, including the inlined analytics schema.
+# Secret: SUMMARY_TOKEN. Live it summarises daily; the schedule is not imported.
+name = "exo-telemetry"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+send_metrics = false
+
+[placement]
+mode = "smart"
+
+[observability]
+enabled = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "exo-telemetry"
+database_id = "REPLACE_WITH_RESOURCE_ID"
+
+[triggers]
+crons = []
