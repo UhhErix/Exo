@@ -106,6 +106,17 @@ export function parseTpuLatest(html, fallbackLabel) {
 export const amdReleaseNotesUrl = ([y, m, n]) =>
   `https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-${y}-${m}-${n}.html`
 
+/** Strip HTML tags to a fixed point so nested or unclosed fragments cannot survive. */
+function stripTags(raw) {
+  let prev = ''
+  let cur = String(raw)
+  while (cur !== prev) {
+    prev = cur
+    cur = cur.replace(/<[^>]*>/g, '')
+  }
+  return cur.replace(/[<>]/g, '')
+}
+
 /** amd.com's page for y.m.n, or null when the page is not a release note for that version. */
 export function parseAmdReleaseNotes(html, [y, m, n]) {
   const version = `${y}.${m}.${n}`
@@ -119,7 +130,7 @@ export function parseAmdReleaseNotes(html, [y, m, n]) {
   else if (low.includes('hotfix')) tag = 'Hotfix'
   const updated = /Last Updated(?:<\/b>)?\s*:?\s*(.{0,80}?\d{4})/is.exec(html)
   const date = updated
-    ? updated[1].replace(/<[^>]+>/g, '').trim().replace(/\.+$/, '').replace(/\s+/g, ' ').replace(/(\d)\s+(st|nd|rd|th)\b/g, '$1$2')
+    ? stripTags(updated[1]).trim().replace(/\.+$/, '').replace(/\s+/g, ' ').replace(/(\d)\s+(st|nd|rd|th)\b/g, '$1$2')
     : ''
   return { version, tag, label: 'AMD Radeon', date, title_line: title, url: amdReleaseNotesUrl([y, m, n]), source: 'amd.com' }
 }
