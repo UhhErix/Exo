@@ -211,3 +211,83 @@ test('edge HTMLRewriter injects live UPDATES version, size, and SHA-256 into /do
     else globalThis.HTMLRewriter = origRewriter
   }
 })
+
+test('hydratePage on /launcher requests only launcher metadata and coalesces concurrent cold fetches', async () => {
+  const origRewriter = globalThis.HTMLRewriter
+  globalThis.HTMLRewriter = class {
+    constructor() { this.handlers = [] }
+    on(selector, handler) { this.handlers.push([selector, handler]); return this }
+    async transform(response) {
+      let out = await response.text()
+      for (const [selector, handler] of this.handlers) {
+        const attr = selector.slice(1, -1)
+        const re = new RegExp(`(<[a-z0-9-]+[^>]*\\b${attr}="([^"]+)"[^>]*>)([\\s\\S]*?)(</[a-z0-9-]+>)`, 'gi')
+        out = out.replace(re, (full, open, val, inner, close) => {
+          let nextOpen = open
+          let nextInner = inner
+          handler.element({
+            getAttribute(name) {
+              const m = new RegExp(`\\b${name}="([^"]*)"`, 'i').exec(open)
+              return m ? m[1] : null
+            },
+            setInnerContent(v) { nextInner = String(v) },
+            setAttribute(name, v) {
+              const attrRe = new RegExp(`\\b${name}="[^"]*"`, 'i')
+              nextOpen = attrRe.test(nextOpen) ? nextOpen.replace(attrRe, `${name}="${v}"`) : nextOpen.replace(/>$/, ` ${name}="${v}">`)
+            },
+          })
+          return `${nextOpen}${nextInner}${close}`
+        })
+      }
+      return new Response(out, response)
+    }
+  }
+  const calls = []
+  const shaL = 'b'.repeat(64)
+  const env = {
+    ASSETS: { fetch: () => new Response(launcherPage(), { headers: { 'content-type': 'text/html' } }) },
+    UPDATES_ORIGIN: 'https://updates.getexo.app',
+    UPDATES: {
+      async fetch(url) {
+        calls.push(String(url))
+        await new Promise((r) => setTimeout(r, 15))
+        return new Response(JSON.stringify({
+          app: 'launcher',
+          tag: 'v3.29.0',
+          version: '3.29.0',
+          files: { setup: 'https://updates.getexo.app/v1/launcher/download/v3.29.0/ExoLauncher-Setup.exe' },
+          checks: { setup: { size: 120000000, sha256: shaL } },
+        }))
+      },
+    },
+  }
+  try {
+    const { default: coldWorker } = await import(`../src/worker.js?cold=${Date.now()}`)
+    const [a, b, c] = await Promise.all([
+      coldWorker.fetch(new Request('https://getexo.app/launcher'), env, {}),
+      coldWorker.fetch(new Request('https://getexo.app/launcher'), env, {}),
+      coldWorker.fetch(new Request('https://getexo.app/launcher'), env, {}),
+    ])
+    assert.equal(a.status, 200)
+    assert.equal(b.status, 200)
+    assert.equal(c.status, 200)
+    assert.deepEqual(calls, ['https://updates.getexo.app/v1/launcher/latest'])
+    const html = await a.text()
+    assert.ok(html.includes('v3.29.0'))
+    assert.ok(html.includes(shaL))
+  } finally {
+    if (origRewriter === undefined) delete globalThis.HTMLRewriter
+    else globalThis.HTMLRewriter = origRewriter
+  }
+})
+
+test('pages.js includes #i-check and site.js swaps <use> href without scaleX pill distortion', () => {
+  const html = homePage()
+  const js = readFileSync(new URL('../src/site.js', import.meta.url), 'utf8')
+  const css = readFileSync(new URL('../src/site.css', import.meta.url), 'utf8')
+  assert.ok(html.includes('id="i-check"'))
+  assert.ok(js.includes("setAttribute('href', '#i-check')"))
+  assert.ok(!js.includes('scaleX('))
+  assert.ok(css.includes('width: 0;'))
+  assert.ok(css.includes(':has(> .i:first-child)'))
+})

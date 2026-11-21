@@ -8,6 +8,7 @@
 
 :root {
   color-scheme: dark;
+  scrollbar-color: var(--hairline-strong) var(--void);
   --void: #000000;
   --surface: #0b0b0d;
   --surface-raised: #131316;
@@ -46,10 +47,11 @@
   --dur-quick: 140ms;
   --dur-base: 180ms;
   --dur-move: 240ms;
-  --dur-arrive: 420ms;
+  --dur-arrive: 400ms;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-arrive: cubic-bezier(0.2, 0.8, 0, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -68,7 +70,9 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font-family: inherit; }
+input, textarea { caret-color: var(--ink); }
 p, h1, h2, h3, figure { margin: 0; }
+::selection { background: var(--ink); color: var(--void); }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .skip { position: absolute; left: -9999px; }
 .skip:focus {
@@ -211,7 +215,7 @@ p, h1, h2, h3, figure { margin: 0; }
   from { opacity: 0; transform: translate3d(0, 14px, 0); }
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
-.js .hero-anim { animation: exo-rise var(--dur-arrive) var(--ease-out) backwards; }
+.js .hero-anim { animation: exo-rise var(--dur-arrive) var(--ease-arrive) backwards; }
 .js .hero-anim.d1 { animation-delay: 50ms; }
 .js .hero-anim.d2 { animation-delay: 110ms; }
 .js .hero-anim.d3 { animation-delay: 170ms; }
@@ -220,7 +224,7 @@ p, h1, h2, h3, figure { margin: 0; }
 .js [data-reveal] {
   opacity: 0;
   transform: translate3d(0, 16px, 0);
-  transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+  transition: opacity var(--dur-arrive) var(--ease-arrive), transform var(--dur-arrive) var(--ease-arrive);
 }
 .js [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
 
@@ -250,6 +254,9 @@ p, h1, h2, h3, figure { margin: 0; }
 .btn.copy { min-height: 34px; padding: 0 13px; font-size: var(--size-xs); }
 .btn.copy.is-copied { border-color: var(--good); color: var(--good); }
 .btn.copy .i { width: 15px; height: 15px; }
+.btn:has(> .i:first-child) { padding-left: 18px; }
+.btn.small:has(> .i:first-child) { padding-left: 12px; }
+.btn.copy:has(> .i:first-child) { padding-left: 10px; }
 
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 
@@ -377,15 +384,14 @@ h2.section {
   left: 0;
   top: 4px;
   bottom: 4px;
-  width: 100px;
+  width: 0;
   border-radius: var(--radius-pill);
   background: var(--ink);
   pointer-events: none;
-  transform-origin: left center;
-  transform: translate3d(0, 0, 0) scaleX(0);
+  transform: translate3d(0, 0, 0);
   opacity: 0;
-  transition: transform var(--dur-move) var(--ease-out), opacity var(--dur-quick) var(--ease-out);
-  will-change: transform;
+  transition: transform var(--dur-move) var(--ease-out), width var(--dur-move) var(--ease-out), opacity var(--dur-quick) var(--ease-out);
+  will-change: transform, width;
 }
 .seg-pill.ready { opacity: 1; }
 .seg-btn {

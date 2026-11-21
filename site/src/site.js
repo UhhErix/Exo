@@ -64,6 +64,7 @@ if (reveals.length) {
   if (reducedMotion() || !('IntersectionObserver' in window)) {
     for (const el of reveals) el.classList.add('is-visible')
   } else {
+    const vh = window.innerHeight || 900
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
@@ -71,12 +72,10 @@ if (reveals.length) {
         observer.unobserve(entry.target)
       }
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 })
-    for (const el of reveals) observer.observe(el)
-    // Safety fallback so nothing stays hidden if a tall section straddles initial load
-    setTimeout(() => {
-      for (const el of reveals) el.classList.add('is-visible')
-      observer.disconnect()
-    }, 1800)
+    for (const el of reveals) {
+      if (el.getBoundingClientRect().top < vh * 0.95) el.classList.add('is-visible')
+      else observer.observe(el)
+    }
   }
 }
 
@@ -95,7 +94,8 @@ for (const container of document.querySelectorAll('[data-tabs]')) {
     const width = activeTab.offsetWidth
     const x = activeTab.offsetLeft
     if (!width) return
-    pill.style.transform = `translate3d(${x}px, 0, 0) scaleX(${width / 100})`
+    pill.style.width = `${width}px`
+    pill.style.transform = `translate3d(${x}px, 0, 0)`
     pill.classList.add('ready')
   }
 
@@ -152,6 +152,7 @@ for (const container of document.querySelectorAll('[data-tabs]')) {
 // 5. One-click SHA-256 copy with clipboard -> check morph
 const COPY_PATH = 'M8 16H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M10 10h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z'
 const CHECK_PATH = 'M5 13l4 4L19 7'
+const copyTimers = new WeakMap()
 
 document.addEventListener('click', async (event) => {
   const button = event.target instanceof Element ? event.target.closest('[data-copy-sha]') : null
@@ -163,14 +164,20 @@ document.addEventListener('click', async (event) => {
     await navigator.clipboard.writeText(value)
     button.classList.add('is-copied')
     const label = button.querySelector('span')
-    const icon = button.querySelector('svg path')
-    if (icon) icon.setAttribute('d', CHECK_PATH)
+    if (label && button.dataset.copyLabel === undefined) button.dataset.copyLabel = label.textContent || 'Copy'
+    const useEl = button.querySelector('svg use')
+    const pathEl = button.querySelector('svg path')
+    if (useEl) useEl.setAttribute('href', '#i-check')
+    else if (pathEl) pathEl.setAttribute('d', CHECK_PATH)
     if (label) label.textContent = 'Copied'
-    setTimeout(() => {
+    const prev = copyTimers.get(button)
+    if (prev) clearTimeout(prev)
+    copyTimers.set(button, setTimeout(() => {
       button.classList.remove('is-copied')
-      if (icon) icon.setAttribute('d', COPY_PATH)
-      if (label) label.textContent = 'Copy SHA-256'
-    }, 1800)
+      if (useEl) useEl.setAttribute('href', '#i-copy')
+      else if (pathEl) pathEl.setAttribute('d', COPY_PATH)
+      if (label) label.textContent = button.dataset.copyLabel || 'Copy'
+    }, 1800))
   } catch {
     // Clipboard unavailable
   }
