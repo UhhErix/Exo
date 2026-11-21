@@ -11,6 +11,7 @@ const ICON_DEFS = `<svg width="0" height="0" hidden aria-hidden="true">
 <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3M5 17l.9 2.1L8 20l-2.1.9L5 23l-.9-2.1L2 20l2.1-.9L5 17M19 14l.9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14"/></symbol>
 <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4l8 4l-8 4l-8-4l8-4M4 12l8 4l8-4M4 16l8 4l8-4"/></symbol>
 <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.3 3.9L2.5 17.4A2 2 0 0 0 4.2 20.4h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></symbol>
 </svg>`
 
 const picture = (slot, alt, sizes, priority = false) =>
@@ -85,14 +86,14 @@ const footer = () => `<footer class="foot">
 </footer>`
 
 const ROOMS = [
-  ['library', 'Library', 'All stores in one Void black grid', 'Steam, Epic, GOG, Riot, Xbox, EA, Ubisoft, Battle.net and added games together under Exo 3.28.0 with Real Liquid Glass top bar and Steam Family badges.'],
-  ['game', 'Game page', 'Zero-scroll game sheet', 'Play, total playtime, last launched, storage footprint, live DLSS/FSR/XeSS versions, OptiScaler frame generation, HDR and Shader status on one page without scrolling.'],
+  ['library', 'Library', 'All stores in one Void black grid', 'Steam, Epic, GOG, Riot, Xbox, EA, Ubisoft, Battle.net and added games together with a Real Liquid Glass top bar, top-bar Devices room and Steam Family badges.'],
+  ['game', 'Game page', 'Full-room game page', 'Play, live achievements, total playtime, last launched, storage footprint, DLSS/FSR/XeSS versions, OptiScaler frame generation, HDR and Shader status in a spacious full-room view.'],
   ['store', 'Store', 'Discover across official storefronts', 'Curated picks, upcoming calendar, wishlist price alerts and per-store pricing without ads or third-party grey markets.'],
   ['discord', 'Discord', 'Native Discord client inside Exo', 'Servers, DMs, Friends, Stage channels, HDR screen share and release announcements running natively beside your games.'],
   ['music', 'Music', 'Spotify, Apple Music and YouTube Music', 'Browse your library, follow lyrics and control volume or Jam directly from Exo\u2019s mini player without extra windows.'],
-  ['pc', 'PC & Shaders', 'Hardware, drivers and Exo Shaders 1.4.8', 'Driver-only NVIDIA updates with Autopilot restore, precompiled shader caches and hardware status in plain words.'],
-  ['apps', 'Apps', 'Redesigned PC > Apps uninstaller', 'Inspect every Windows app and startup entry with Exo replaces, Startup and Bloat tags alongside dependency counts.'],
-  ['devices', 'Devices', 'Exo Mouse and audio gear over USB', 'Configure supported mice (DPI, polling rate, per-game profiles) and inspect connected audio gear without vendor bloatware.'],
+  ['pc', 'PC & Shaders', 'Automatic Exo AI, drivers and Shaders', 'Adaptive GPU fan curves, NVIDIA aspect-ratio scaling and RTX Video Super Resolution auto-tuning, full-screen GPU and chipset driver installers, and single-click shader preparation.'],
+  ['apps', 'Apps', 'Clean Windows Apps & Startup management', 'Uninstall unwanted apps across user accounts or every account, clean leftovers with one-click Put back, and toggle Startup entries cleanly.'],
+  ['devices', 'Devices', 'Top-bar room for Exo Mouse and audio gear', 'Open Devices straight from the top bar to tune supported mice (DPI, polling rate, per-game profiles) and inspect connected audio gear without vendor bloatware.'],
 ]
 
 export function homePage() {
@@ -148,13 +149,13 @@ ${header('/')}
 <h3>Every game store, in one library.</h3>
 <p class="lead">One fast library across Steam, Epic, GOG, Riot, Xbox and more — plus native Discord, Music, PC driver/app cleanup, Exo Shaders, Capture and Exo Mouse.</p>
 <ul class="app-bullets">
-<li>Real Liquid Glass capsules over pure OLED black surfaces and zero-scroll game pages</li>
-<li>Redesigned PC &gt; Apps uninstaller and automatic Exo EQ audio profiles</li>
-<li>Discord HDR screen sharing, Stage channels, Steam Family badges and Exo Shaders 1.4.8</li>
+<li>Real Liquid Glass capsules over pure OLED black surfaces and full-room game pages</li>
+<li>Automatic Exo AI GPU fan curves, Exo EQ profiles and Windows Apps cleanup</li>
+<li>Discord HDR screen sharing, Stage channels, top-bar Devices room and Exo Shaders</li>
 </ul>
 <div class="row"><a class="btn primary" href="/download/launcher" rel="nofollow"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-download"/></svg>Download</a><a class="btn" href="/launcher">See Launcher</a><a class="btn" href="/launcher/changelog">Changelog</a></div>
 </div>
-<div class="frame">${picture('game', 'Exo Launcher 3.28.0 zero-scroll game sheet for Beast of Reincarnation', '(min-width: 900px) 680px, 100vw', false)}</div>
+<div class="frame">${picture('game', 'Exo Launcher full-room game page', '(min-width: 900px) 680px, 100vw', false)}</div>
 </div>
 <div role="tabpanel" class="tab-panel app-split" id="app-panel-cinema" aria-labelledby="app-tab-cinema" hidden>
 <div>
@@ -177,7 +178,7 @@ ${header('/')}
 <div>
 <span class="kicker">What\u2019s in 3.28.0</span>
 <h2 class="section" id="tour-heading">Inspect every room.</h2>
-<p class="sec-sub">Real Liquid Glass controls, zero-scroll game pages, native Discord calls, lossless Apple Music or Spotify control, clean uninstaller and USB device tuning.</p>
+<p class="sec-sub">Real Liquid Glass controls, full-room game pages, native Discord calls, lossless music players, top-bar Devices room and automatic PC tuning.</p>
 </div>
 <div class="seg-bar" role="tablist" aria-label="Exo Launcher rooms"><span class="seg-pill" data-tab-pill aria-hidden="true"></span>${ROOMS.map(([id, label], i) =>
     `<button type="button" role="tab" class="seg-btn" id="home-rtab-${id}" aria-controls="home-rpanel-${id}" aria-selected="${i === 0 ? 'true' : 'false'}" tabindex="${i === 0 ? '0' : '-1'}">${label}</button>`
@@ -202,7 +203,7 @@ ${ROOMS.map(([id, , title, desc], i) =>
 <article class="tile-card">
 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-layers"/></svg>
 <h3>Every system tool tuned</h3>
-<p>Driver-only NVIDIA installs, disk-verified anti-cheat protection, OptiScaler frame generation, Exo Shaders 1.4.8, automatic Exo EQ and PC &gt; Apps cleanup.</p>
+<p>Full-screen GPU and chipset driver installers, automatic Exo AI GPU fan curves, NVIDIA aspect-ratio scaling and RTX Video Super Resolution auto-tuning, OptiScaler frame generation, Exo Shaders and PC &gt; Apps cleanup.</p>
 </article>
 <article class="tile-card">
 <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg>
@@ -243,13 +244,13 @@ export function launcherPage() {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   }
   const features = [
-    ['game', 'Library & Game sheets', 'Zero-scroll game pages across every storefront.', 'Steam (with QR sign-in and Family badges), Epic, GOG, Amazon, Riot, Xbox, EA, Ubisoft, Battle.net, Rockstar, itch.io, Minecraft and custom titles. Stats, DLSS/FSR/XeSS versions, OptiScaler frame generation, HDR and Shaders sit inline on a single zero-scroll sheet.', false],
-    ['apps', 'PC > Apps & Audio', 'Clean bloatware and keep Exo EQ locked in.', 'The redesigned PC > Apps uninstaller groups Startup, Exo replaces and Bloat tags alongside dependency counts. Automatic Exo EQ switches per-game sound curves cleanly alongside Windows Output and Microphone controls.', true],
-    ['discord', 'Discord', 'Native Discord with screen share and Stage channels.', 'Servers, DMs, Friends, HDR-tonemapped screen sharing with H.265/H.264 fallback, Stage channels, soundboard search and gift embeds right beside your games.', false],
+    ['game', 'Library & Game pages', 'Full-room game pages across every storefront.', 'Steam (with QR sign-in and Family badges), Epic, GOG, Amazon, Riot, Xbox, EA, Ubisoft, Battle.net, Rockstar, itch.io, Minecraft and custom titles. Achievements, playtime, DLSS/FSR/XeSS versions, OptiScaler frame generation, HDR and Shaders sit cleanly in a full-room view.', false],
+    ['apps', 'PC > Apps & Audio', 'Clean bloat across accounts and keep Exo EQ locked in.', 'Uninstall Windows apps with automatic Every-account scope for provisioned bloat, undo leftover removals in one click, and toggle Startup entries cleanly beside automatic Exo EQ curves.', true],
+    ['discord', 'Discord', 'Native Discord with screen share and Stage channels.', 'Servers, DMs, Friends, HDR-tonemapped screen sharing with H.265/H.264 fallback, Stage channels, instant DM message previews and gift embeds right beside your games.', false],
     ['music', 'Music', 'Spotify, Apple Music and YouTube Music built in.', 'Browse your library, follow synced lyrics and steer playback and volume from Exo\u2019s mini player in the top bar without opening separate browser windows.', true],
-    ['pc', 'Drivers & Shaders', 'NVIDIA driver-only installs and Exo Shaders 1.4.8.', 'Clean driver updates without vendor bloat, Autopilot optimization that preserves your overrides, always-on Memory Integrity checks, and precompiled shaders across games.', false],
+    ['pc', 'Drivers, Exo AI & Shaders', 'Automatic GPU cooling, full-screen installers and single-click Shaders.', 'Full-screen animated GPU and chipset driver installers, adaptive NVML GPU fan curves, NVIDIA aspect-ratio scaling with RTX Video Super Resolution auto-tuning, Memory Integrity protection and clean shader preparation.', false],
     ['store', 'Store', 'Official store prices and wishlist alerts.', 'Discover new, upcoming and discounted releases across official storefronts only, with wishlist alerts when games drop in price on Steam.', true],
-    ['devices', 'Devices', 'Exo Mouse and audio peripherals over USB.', 'Tune DPI stages, polling rate, buttons and per-game mouse profiles natively over USB without background vendor suites.', false],
+    ['devices', 'Devices', 'Top-bar room for Exo Mouse and audio gear.', 'Switch straight to Devices in the top bar to tune DPI stages, polling rate, buttons and per-game mouse profiles natively over USB without background vendor suites.', false],
   ]
   return `${head({
     title: 'Exo Launcher for Windows 11: every game store in one library',

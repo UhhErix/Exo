@@ -11,6 +11,7 @@ const FRESH_SECONDS = 300
 
 const remembered = new Map()
 const answers = new Map()
+const inflight = new Map()
 
 export default {
   async fetch(request, env, ctx) {
@@ -38,7 +39,7 @@ export default {
 
     const assetResponse = await env.ASSETS.fetch(request)
     if (EDGE_PAGES.has(path) && request.method === 'GET' && assetResponse.ok) {
-      const injected = await hydratePage(assetResponse, env)
+      const injected = await hydratePage(assetResponse, path, env)
       return finish(injected, true)
     }
 
@@ -113,14 +114,12 @@ async function resolvedRelease(app, env) {
   }
 }
 
-async function hydratePage(response, env) {
+async function hydratePage(response, path, env) {
   if (typeof HTMLRewriter !== 'function' || !env?.UPDATES?.fetch) return response
   try {
-    const [launcher, cinema] = await Promise.all([
-      resolvedRelease('launcher', env),
-      resolvedRelease('cinema', env),
-    ])
-    const info = { launcher, cinema }
+    const apps = path === '/launcher' ? ['launcher'] : path === '/cinema' ? ['cinema'] : ['launcher', 'cinema']
+    const resolved = await Promise.all(apps.map(async (app) => [app, await resolvedRelease(app, env)]))
+    const info = Object.fromEntries(resolved)
     const formatSize = (bytes) => {
       if (!Number.isFinite(bytes) || bytes <= 0) return ''
       const mb = (bytes / (1024 * 1024)).toFixed(1)
@@ -167,20 +166,26 @@ async function newest(app, env) {
   if (!env?.UPDATES?.fetch) return null
   const kept = remembered.get(app)
   if (kept && kept.until > Date.now()) return kept.latest
-  try {
-    const origin = env.UPDATES_ORIGIN || 'https://updates.getexo.app'
-    const response = await env.UPDATES.fetch(`${origin}/v1/${app}/latest`, {
-      headers: { 'user-agent': 'exo-site' },
-      signal: AbortSignal.timeout(3000),
-    })
-    if (!response.ok) return null
-    const latest = await response.json()
-    if (!TAG.test(latest?.tag) || typeof latest?.files?.setup !== 'string') return null
-    remembered.set(app, { latest, until: Date.now() + FRESH_SECONDS * 1e3 })
-    return latest
-  } catch {
-    return null
-  }
+  const existing = inflight.get(app)
+  if (existing) return existing
+  const req = (async () => {
+    try {
+      const origin = env.UPDATES_ORIGIN || 'https://updates.getexo.app'
+      const response = await env.UPDATES.fetch(`${origin}/v1/${app}/latest`, {
+        headers: { 'user-agent': 'exo-site' },
+        signal: AbortSignal.timeout(3000),
+      })
+      if (!response.ok) return null
+      const latest = await response.json()
+      if (!TAG.test(latest?.tag) || typeof latest?.files?.setup !== 'string') return null
+      remembered.set(app, { latest, until: Date.now() + FRESH_SECONDS * 1e3 })
+      return latest
+    } catch {
+      return null
+    }
+  })().finally(() => inflight.delete(app))
+  inflight.set(app, req)
+  return req
 }
 
 async function sha256(latest, env) {
